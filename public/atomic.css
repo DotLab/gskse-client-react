@@ -52,26 +52,29 @@
 .C\(gainsboro\)\:h:hover {
   color: gainsboro;
 }
-.C\(red\)\:h:hover {
-  color: red;
+.C\(dodgerblue\)\:h:hover {
+  color: dodgerblue;
 }
 .C\(deepskyblue\)\:h:hover {
   color: deepskyblue;
 }
-.C\(dodgerblue\)\:h:hover {
-  color: dodgerblue;
+.C\(red\)\:h:hover {
+  color: red;
 }
 .HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
   color: dodgerblue;
 }
-.Cur\(a\) {
-  cursor: auto;
-}
 .Cur\(p\) {
   cursor: pointer;
 }
+.Cur\(a\) {
+  cursor: auto;
+}
 .D\(ib\) {
   display: inline-block;
+}
+.D\(b\) {
+  display: block;
 }
 .Blur\(30px\) {
   filter: blur(30px);
@@ -82,11 +85,14 @@
 .Fl\(start\) {
   float: left;
 }
+.Fw\(lr\) {
+  font-weight: lighter;
+}
 .Fw\(b\) {
   font-weight: bold;
 }
-.Fz\(\.75em\) {
-  font-size: .75em;
+.Fz\(\.8em\) {
+  font-size: .8em;
 }
 .Fz\(\.9em\) {
   font-size: .9em;
@@ -100,8 +106,8 @@
 .Fz\(1em\) {
   font-size: 1em;
 }
-.Fz\(\.8em\) {
-  font-size: .8em;
+.Fz\(\.75em\) {
+  font-size: .75em;
 }
 .H\(100\%\) {
   height: 100%;
@@ -121,13 +127,13 @@
 .Lh\(2\) {
   line-height: 2;
 }
-.Mx\(a\) {
-  margin-left: auto;
-  margin-right: auto;
-}
 .Mx\(5px\) {
   margin-left: 5px;
   margin-right: 5px;
+}
+.Mx\(a\) {
+  margin-left: auto;
+  margin-right: auto;
 }
 .Mt\(6px\) {
   margin-top: 6px;
@@ -192,6 +198,9 @@
 .Start\(0\) {
   left: 0;
 }
+.Op\(\.2\) {
+  opacity: .2;
+}
 .Op\(\.4\) {
   opacity: .4;
 }
@@ -244,11 +253,11 @@
 .Whs\(nw\) {
   white-space: nowrap;
 }
+.W\(5\%\) {
+  width: 5%;
+}
 .W\(100\%\) {
   width: 100%;
-}
-.W\(20\%\) {
-  width: 20%;
 }
 .W\(25\%\) {
   width: 25%;
@@ -259,8 +268,11 @@
 .W\(40\%\) {
   width: 40%;
 }
-.W\(5\%\) {
-  width: 5%;
+.W\(20\%\) {
+  width: 20%;
+}
+.W\(50\%\) {
+  width: 50%;
 }
 .W\(75\%\) {
   width: 75%;

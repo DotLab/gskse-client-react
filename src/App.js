@@ -1,11 +1,22 @@
 import React, {Component} from 'react';
-import {Route, Link, withRouter} from 'react-router-dom';
+import {Route, Link, Switch, withRouter} from 'react-router-dom';
 
 import Home from './Home';
+import Join from './Join';
+import Login from './Login';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: null,
+    };
+  }
+
   render() {
     const history = this.props.history;
+    const user = this.state.user;
 
     return <div className="Mih(1000px)">
       {/* header */}
@@ -19,7 +30,7 @@ class App extends Component {
               placeholder="Search for news, symbols or companies"/>
             <button>Go</button>
           </span>
-          <span className="Pos(a) End(40px) B(10px)">
+          {user ? <span className="Pos(a) End(40px) B(10px)">
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
                 New v
               <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" onChange={(e) => history.push(e.target.value)}>
@@ -38,7 +49,10 @@ class App extends Component {
                 <option value="logout">Sign out</option>
               </select>
             </span>
-          </span>
+          </span> : <span className="Pos(a) End(40px) B(10px)">
+            <Link className="Fw(b) Mstart(20px)" to="/login">Sign in</Link>
+            <Link className="Fw(b) Mstart(20px)" to="/join">Sign up</Link>
+          </span>}
         </div>
       </div>
 
@@ -53,7 +67,12 @@ class App extends Component {
       </div>
 
       {/* main */}
-      <Route path="/" exact component={Home} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/join" exact component={Join} />
+        <Route path="/login" exact component={Login} />
+        <Route />
+      </Switch>
     </div>;
   }
 }
