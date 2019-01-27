@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import HomeShowcase from './HomeShowcase';
+
 class App extends Component {
   render() {
     return <div className="Mih(1000px)">
@@ -39,22 +41,12 @@ class App extends Component {
           {/* left column */}
           <div className="Fl(start) W(75%) Pend(40px)">
             {/* hero */}
-            <div className="H(350px) Bgz(ct) Pos(r) Mb(10px)" style={{backgroundImage: 'url(https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269)'}}>
-              <div className="Pos(a) End(0) W(40%) H(100%) Ov(h)">
-                <div className="H(100%) W(100%) Blur(30px) Scale(1.5) Bgp(c)" style={{backgroundImage: 'url(https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269)'}}></div>
-              </div>
-              <div className="Pos(a) End(0) W(40%) H(100%) Bgc(black) Op(.4)"></div>
-              <div className="Pos(a) End(0) W(40%) H(100%) C(white) P(35px)">
-                <h3 className="Fz(1.5em) Lh(1.15) Mb(20px)">Tax updates, retail sales, and food recalls you can't miss this weekend</h3>
-                <p className="Lh(1.15)">IRS workers, taxes, and travel affected by shutdown</p>
-                <span className="Fw(b) Cur(p) Td(u):h">Watch ></span>
-                <div className="Pos(a) B(35px) W(100%)">
-                  <span className="Fw(b) Fz(1.5em) Mend(20px)">C</span>
-                  <span className="Fw(b) Fz(1.5em) Mend(20px)">L</span>
-                  <span className="Fw(b) Fz(1.5em) Mend(20px)">S</span>
-                </div>
-              </div>
-            </div>
+            <HomeShowcase
+              imageUrl="https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269"
+              title="Tax updates, retail sales, and food recalls you can't miss this weekend"
+              description="IRS workers, taxes, and travel affected by shutdown"
+              actionText="Watch >"
+            />
 
             {/* hero links */}
             <div className="Pos(r) Mb(20px) Mend(-10px)">
@@ -145,14 +137,14 @@ class App extends Component {
                     <td className="Ta(end) C(red)">-3.37</td>
                     <td className="Ta(end) C(green)">-1.80%</td>
                   </tr>
-                  <tr className="BdB Bdbc(gainsboro)"><td className="Fz(.75em) Lh(1) Pb(5px)" colspan="4">McDonald's Corporation</td></tr>
+                  <tr className="BdB Bdbc(gainsboro)"><td className="Fz(.75em) Lh(1) Pb(5px)" colSpan="4">McDonald's Corporation</td></tr>
                   <tr className="Lh(1.5)">
                     <td className="Fw(b) C(dodgerblue)">MCD</td>
                     <td className="Ta(end)">184.00</td>
                     <td className="Ta(end) C(red)">-3.37</td>
                     <td className="Ta(end) C(green)">-1.80%</td>
                   </tr>
-                  <tr className="BdB Bdbc(gainsboro)"><td className="Fz(.75em) Lh(1) Pb(5px)" colspan="4">McDonald's Corporation</td></tr>
+                  <tr className="BdB Bdbc(gainsboro)"><td className="Fz(.75em) Lh(1) Pb(5px)" colSpan="4">McDonald's Corporation</td></tr>
                 </tbody>
               </table>
             </div>
