@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
 import HomeShowcase from './HomeShowcase';
-import HomeShowcaseLinks from './HomeShowcaseLinks';
+import HomeShowcaseLinkBar from './HomeShowcaseLinkBar';
+import HomeNewsListItem from './HomeNewsListItem';
 
 class App extends Component {
   render() {
@@ -50,7 +51,7 @@ class App extends Component {
             />
 
             {/* hero links */}
-            <HomeShowcaseLinks
+            <HomeShowcaseLinkBar
               links={[
                 {title: 'Earning, FOMC, Jobs - The week ahead in markets', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg'},
                 {title: 'Sweethearts spike in popularity on Amazon', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/CDEEeNmRp4sI8rqZeeoMcQ--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4a2cc323000059011fa178.jpg.cf.jpg'},
@@ -61,43 +62,23 @@ class App extends Component {
             />
 
             {/* news with picture */}
-            <div>
-              <img className="Fl(start) W(20%) Pend(10px) Mt(10px)" src="https://s.yimg.com/uu/api/res/1.2/HZn428GLaMxVpKZ3MlYzAA--~B/Zmk9c3RyaW07aD0xMjM7cHlvZmY9MDtxPTgwO3c9MjIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/ibd.com/1eca04fa1c2e999f92cbe7d3db997d7e" alt=""/>
-              <div className="Fl(start) W(75%)">
-                <div className="Mb(0)">
-                  <span className="C(dodgerblue) Fw(b) Mend(10px)">Business</span>
-                  <span className="C(dimgray)">CNBC • yesterday</span>
-                </div>
-                <h3 className="Lh(1.15) Mb(4px)">Intel CEO: The government shutdown and US-China trade war curtail consumer and business spending</h3>
-                <p className="Lh(1.15)">A number of "geopolitical dynamics" are going to weigh on "ultimate consumers and enterprise desires to buy" this year, Intel's interim CEO, Robert Swan, says. "We expect those clouds to dissipate over time and get back to a more healthy environment, but right now we're a little bit cautious," he says.</p>
-              </div>
-              <div className="Fl(start) W(5%) Pos(r)">
-                <div className="Pos(a) T(10px) End(0)">
-                  <div className="C(darkgray) Fw(b) Fz(1.25em)">C</div>
-                  <div className="C(darkgray) Fw(b) Fz(1.25em)">L</div>
-                  <div className="C(darkgray) Fw(b) Fz(1.25em)">S</div>
-                </div>
-              </div>
-            </div>
+            <HomeNewsListItem
+              imageUrl="https://s.yimg.com/uu/api/res/1.2/HZn428GLaMxVpKZ3MlYzAA--~B/Zmk9c3RyaW07aD0xMjM7cHlvZmY9MDtxPTgwO3c9MjIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/ibd.com/1eca04fa1c2e999f92cbe7d3db997d7e"
+              category="Business"
+              source="CNBC"
+              time="yesterday"
+              title="Intel CEO: The government shutdown and US-China trade war curtail consumer and business spending"
+              excerpt={'A number of "geopolitical dynamics" are going to weigh on "ultimate consumers and enterprise desires to buy" this year, Intel\'s interim CEO, Robert Swan, says. "We expect those clouds to dissipate over time and get back to a more healthy environment, but right now we\'re a little bit cautious," he says.'}
+            />
 
             {/* news without picture */}
-            <div>
-              <div className="Fl(start) W(95%)">
-                <div className="Mb(0)">
-                  <span className="C(dodgerblue) Fw(b) Mend(10px)">Business</span>
-                  <span className="C(dimgray)">CNBC • yesterday</span>
-                </div>
-                <h3 className="Lh(1.15) Mb(4px)">Intel CEO: The government shutdown and US-China trade war curtail consumer and business spending</h3>
-                <p className="Lh(1.15)">A number of "geopolitical dynamics" are going to weigh on "ultimate consumers and enterprise desires to buy" this year, Intel's interim CEO, Robert Swan, says. "We expect those clouds to dissipate over time and get back to a more healthy environment, but right now we're a little bit cautious," he says.</p>
-              </div>
-              <div className="Fl(start) W(5%) Pos(r)">
-                <div className="Pos(a) T(10px) End(0)">
-                  <div className="C(darkgray) Fw(b) Fz(1.25em)">C</div>
-                  <div className="C(darkgray) Fw(b) Fz(1.25em)">L</div>
-                  <div className="C(darkgray) Fw(b) Fz(1.25em)">S</div>
-                </div>
-              </div>
-            </div>
+            <HomeNewsListItem
+              category="Business"
+              source="ETF Trends"
+              time="yesterday"
+              title={'Why The S&P 500\'s Long-Term Performance Is So Confusion To Investors'}
+              excerpt={'Above you see the rolling 10-year return of the S&P 500 Index.  At the far right, you can see a spike in this figure, such that in the past couple of years, the trailing 10-year experience for an investor went from solid (around 6% a year) to over 11% a year.'}
+            />
           </div>
 
           {/* right column */}

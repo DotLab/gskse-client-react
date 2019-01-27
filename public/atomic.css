@@ -121,13 +121,16 @@
 .Lh\(2\) {
   line-height: 2;
 }
+.Mx\(5px\) {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .Mx\(a\) {
   margin-left: auto;
   margin-right: auto;
 }
-.Mx\(5px\) {
-  margin-left: 5px;
-  margin-right: 5px;
+.Mt\(6px\) {
+  margin-top: 6px;
 }
 .Mt\(10px\) {
   margin-top: 10px;
@@ -168,8 +171,8 @@
 .T\(0\) {
   top: 0;
 }
-.T\(10px\) {
-  top: 10px;
+.T\(6px\) {
+  top: 6px;
 }
 .End\(0\) {
   right: 0;
@@ -219,6 +222,9 @@
 }
 .Ta\(end\) {
   text-align: right;
+}
+.HomeNewsListItem:hover .HomeNewsListItem\:h_Td\(u\) {
+  text-decoration: underline;
 }
 .Td\(u\)\:h:hover {
   text-decoration: underline;
