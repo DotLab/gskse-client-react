@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "atomizer": "atomizer -R ./src -o ./public/atomic.css"
+    "atomizer": "atomizer -c ./.atomizer.js -R ./src -o ./public/atomic.css"
   },
   "browserslist": [
     ">0.2%",

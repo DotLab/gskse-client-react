@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function(props) {
   const {imageUrl, title, description, actionText} = props;
-  return <div className="H(350px) Bgz(ct) Pos(r) Mb(10px) Cur(p)" style={{backgroundImage: `url(${imageUrl})`}}>
+  return <div className="H(350px) Bgz(ct) Pos(r) Mb(10px) Cur(p) Bxsh($cardShadow)" style={{backgroundImage: `url(${imageUrl})`}}>
     {/* blurred image */}
     <div className="Pos(a) End(0) W(40%) H(100%) Ov(h)">
       <div className="H(100%) W(100%) Blur(30px) Scale(1.5) Bgp(c)" style={{backgroundImage: `url(${imageUrl})`}}></div>

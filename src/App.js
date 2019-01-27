@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return <div className="Mih(1000px)">
       {/* header */}
-      <div className="Bgc(azure) Pos(st) T(0) Z(1)">
+      <div className="Bgc(azure) Pos(st) T(0) Z(1) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a) Pos(r)">
           <span className="Pend(40px) Fz(1.5em) Fw(b) Lh(2)">GSKSE</span>
           <span className="Va(tb)">
@@ -25,7 +25,7 @@ class App extends Component {
       </div>
 
       {/* navbar */}
-      <div className="Bgc(aliceblue)">
+      <div className="Bgc(aliceblue) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a)">
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Finance Home</span>
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Watchlists</span>
