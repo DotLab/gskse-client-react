@@ -6,7 +6,7 @@ class App extends Component {
       {/* header */}
       <div className="Bgc(azure) Pos(st) T(0) Z(1)">
         <div className="Maw(1280px) Mx(a) Pos(r)">
-          <span className="Pend(40px) Fz(1.5em) Lh(2)">Gensokyo Stock Exchange</span>
+          <span className="Pend(40px) Fz(1.5em) Fw(b) Lh(2)">GSKSE</span>
           <span className="Va(tb)">
             <input
               className="W(350px)"
@@ -26,7 +26,7 @@ class App extends Component {
         <div className="Maw(1280px) Mx(a)">
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Finance Home</span>
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Watchlists</span>
-          <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">My Portfolio</span>
+          <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">My Portfolios</span>
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Screeners</span>
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Markets</span>
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Industries</span>
