@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Link, NavLink, Switch, withRouter} from 'react-router-dom';
+import io from 'socket.io-client';
 
 import Home from './Home';
 import Join from './Join';
@@ -9,27 +10,35 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    const socket = io('http://localhost:3001');
+    window.socket = socket;
+    socket.on('connect', () => {
+      this.setState({connected: true});
+    });
+
     this.state = {
+      connected: false,
       user: null,
     };
   }
 
   render() {
     const history = this.props.history;
-    const user = this.state.user;
+    const {connected, user} = this.state;
 
     return <div className="Mih(1000px)">
       {/* header */}
       <div className="Bgc(azure) Pos(st) T(0) Z(1) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a) Pos(r)">
-          <Link className="Pend(40px) Fz(1.5em) Fw(b) Lh(2)" to="/">GSKSE</Link>
-          <span className="Va(tb)">
+          <Link className="Mend(40px) Fz(1.5em) Fw(b) Lh(2)" to="/">GSKSE</Link>
+          <span className="Va(tb) Mend(10px)">
             <input
               className="W(350px)"
               type="text"
               placeholder="Search for news, symbols or companies"/>
             <button>Go</button>
           </span>
+          {!connected && <span className="Va(tb) C(red)">Connecting...</span>}
           {user ? <span className="Pos(a) End(40px) B(10px)">
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
                 New v
