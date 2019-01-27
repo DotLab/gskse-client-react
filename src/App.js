@@ -34,6 +34,47 @@ class App extends Component {
       <div className="Mt(10px)">
         <div className="Maw(1280px) Mx(a)">
           <div className="Fl(start) W(75%) Pend(40px)">
+            <div className="H(350px) Bgz(ct) Pos(r) Mb(10px)" style={{backgroundImage: 'url(https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269)'}}>
+              <div className="Pos(a) End(0) W(40%) H(100%) Ov(h)">
+                <div className="H(100%) W(100%) Blur(30px) Scale(1.5) Bgp(c)" style={{backgroundImage: 'url(https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269)'}}></div>
+              </div>
+              <div className="Pos(a) End(0) W(40%) H(100%) Bgc(black) Op(.4)"></div>
+              <div className="Pos(a) End(0) W(40%) H(100%) C(white) P(35px)">
+                <h3 className="Fz(1.5em) Lh(1.15) Mb(20px)">Tax updates, retail sales, and food recalls you can't miss this weekend</h3>
+                <p className="Lh(1.15)">IRS workers, taxes, and travel affected by shutdown</p>
+                <span className="Fw(b) Cur(p) Td(u):h">Watch ></span>
+                <div className="Pos(a) B(35px) W(100%)">
+                  <span className="Fw(b) Fz(1.5em) Mend(20px)">C</span>
+                  <span className="Fw(b) Fz(1.5em) Mend(20px)">L</span>
+                  <span className="Fw(b) Fz(1.5em) Mend(20px)">S</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="Pos(r) Mb(20px) Mend(-10px)">
+              <div className="W(20%) Fl(start) Pend(10px)">
+                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
+                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
+              </div>
+              <div className="W(20%) Fl(start) Pend(10px)">
+                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
+                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
+              </div>
+              <div className="W(20%) Fl(start) Pend(10px)">
+                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
+                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
+              </div>
+              <div className="W(20%) Fl(start) Pend(10px)">
+                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
+                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
+              </div>
+              <div className="W(20%) Fl(start) Pend(10px)">
+                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
+                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
+              </div>
+              <div className="Cf"></div>
+            </div>
+
             <div>
               <img className="Fl(start) W(20%) Pend(10px) Mt(10px)" src="https://s.yimg.com/uu/api/res/1.2/HZn428GLaMxVpKZ3MlYzAA--~B/Zmk9c3RyaW07aD0xMjM7cHlvZmY9MDtxPTgwO3c9MjIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/ibd.com/1eca04fa1c2e999f92cbe7d3db997d7e" alt=""/>
               <div className="Fl(start) W(75%)">
@@ -52,6 +93,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
+
             <div>
               <div className="Fl(start) W(95%)">
                 <div className="Mb(0)">
@@ -70,6 +112,7 @@ class App extends Component {
               </div>
             </div>
           </div>
+
           <div className="Fl(start) W(25%)">
             <h2 className="Fz(1em)">My Portfolio & Markets</h2>
             <div className="Mb(20px)">
