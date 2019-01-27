@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 class App extends Component {
   render() {
     return <div className="Mih(1000px)">
+      {/* header */}
       <div className="Bgc(azure) Pos(st) T(0) Z(1)">
         <div className="Maw(1280px) Mx(a) Pos(r)">
           <span className="Pend(40px) Fz(1.5em) Lh(2)">Gensokyo Stock Exchange</span>
@@ -20,6 +21,7 @@ class App extends Component {
         </div>
       </div>
 
+      {/* navbar */}
       <div className="Bgc(aliceblue)">
         <div className="Maw(1280px) Mx(a)">
           <span className="Cur(p) C(dodgerblue):h Fw(b) Lh(2) Mend(30px)">Finance Home</span>
@@ -31,9 +33,12 @@ class App extends Component {
         </div>
       </div>
 
+      {/* main */}
       <div className="Mt(10px)">
         <div className="Maw(1280px) Mx(a)">
+          {/* left column */}
           <div className="Fl(start) W(75%) Pend(40px)">
+            {/* hero */}
             <div className="H(350px) Bgz(ct) Pos(r) Mb(10px)" style={{backgroundImage: 'url(https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269)'}}>
               <div className="Pos(a) End(0) W(40%) H(100%) Ov(h)">
                 <div className="H(100%) W(100%) Blur(30px) Scale(1.5) Bgp(c)" style={{backgroundImage: 'url(https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269)'}}></div>
@@ -51,6 +56,7 @@ class App extends Component {
               </div>
             </div>
 
+            {/* hero links */}
             <div className="Pos(r) Mb(20px) Mend(-10px)">
               <div className="W(20%) Fl(start) Pend(10px)">
                 <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
@@ -75,6 +81,7 @@ class App extends Component {
               <div className="Cf"></div>
             </div>
 
+            {/* news with picture */}
             <div>
               <img className="Fl(start) W(20%) Pend(10px) Mt(10px)" src="https://s.yimg.com/uu/api/res/1.2/HZn428GLaMxVpKZ3MlYzAA--~B/Zmk9c3RyaW07aD0xMjM7cHlvZmY9MDtxPTgwO3c9MjIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/ibd.com/1eca04fa1c2e999f92cbe7d3db997d7e" alt=""/>
               <div className="Fl(start) W(75%)">
@@ -94,6 +101,7 @@ class App extends Component {
               </div>
             </div>
 
+            {/* news without picture */}
             <div>
               <div className="Fl(start) W(95%)">
                 <div className="Mb(0)">
@@ -113,8 +121,11 @@ class App extends Component {
             </div>
           </div>
 
+          {/* right column */}
           <div className="Fl(start) W(25%)">
             <h2 className="Fz(1em)">My Portfolio & Markets</h2>
+
+            {/* portfolio sidebar */}
             <div className="Mb(20px)">
               <h3 className="Mb(0) Fz(1em) D(ib)">Main ></h3>
               <span className="Mb(0) Fl(end) C(dodgerblue)">+ Add Symbol</span>
@@ -146,6 +157,8 @@ class App extends Component {
               </table>
             </div>
             <div className="Bd Ta(c) Fz(.9em) Py(4px) Bdrs(4px) C(dodgerblue) Mb(10px)">DotLab Small Business</div>
+
+            {/* sidebar links */}
             <div className="C(gray) Ta(c) Fz(.9em) Mb(5px)">
               <span className="D(ib) Whs(nw) Mx(5px)">Data Disclaimer</span>
               <span className="D(ib) Whs(nw) Mx(5px)">Help</span>
@@ -154,6 +167,8 @@ class App extends Component {
               <span className="D(ib) Whs(nw) Mx(5px)">About Our Ads</span>
               <span className="D(ib) Whs(nw) Mx(5px)">Terms</span>
             </div>
+
+            {/* sidebar shares */}
             <div className="C(dimgray) Ta(c) Fw(b) Fz(.9em) Mb(20px)">
               <span className="Mx(5px)">Tw</span>
               <span className="Mx(5px)">Fa</span>
