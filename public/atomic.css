@@ -34,11 +34,11 @@
 .C\(dodgerblue\) {
   color: dodgerblue;
 }
-.C\(red\) {
-  color: red;
-}
 .C\(darkgray\) {
   color: darkgray;
+}
+.C\(red\) {
+  color: red;
 }
 .C\(gray\) {
   color: gray;
@@ -57,6 +57,12 @@
 }
 .C\(dodgerblue\)\:h:hover {
   color: dodgerblue;
+}
+.HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
+  color: dodgerblue;
+}
+.Cur\(a\) {
+  cursor: auto;
 }
 .Cur\(p\) {
   cursor: pointer;

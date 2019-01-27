@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import HomeShowcase from './HomeShowcase';
+import HomeShowcaseLinks from './HomeShowcaseLinks';
 
 class App extends Component {
   render() {
@@ -45,33 +46,19 @@ class App extends Component {
               imageUrl="https://s.yimg.com/uu/api/res/1.2/jRxdoNfkaFrT3doRCfN06A--~B/Zmk9c3RyaW07aD00MDQ7cHlvZmY9MDtxPTk1O3c9NzIwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-01/680225a0-218c-11e9-8f7f-4ed91474e269"
               title="Tax updates, retail sales, and food recalls you can't miss this weekend"
               description="IRS workers, taxes, and travel affected by shutdown"
-              actionText="Watch >"
+              actionText="Read >"
             />
 
             {/* hero links */}
-            <div className="Pos(r) Mb(20px) Mend(-10px)">
-              <div className="W(20%) Fl(start) Pend(10px)">
-                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
-                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
-              </div>
-              <div className="W(20%) Fl(start) Pend(10px)">
-                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
-                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
-              </div>
-              <div className="W(20%) Fl(start) Pend(10px)">
-                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
-                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
-              </div>
-              <div className="W(20%) Fl(start) Pend(10px)">
-                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
-                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
-              </div>
-              <div className="W(20%) Fl(start) Pend(10px)">
-                <img className="W(100%) Mb(4px)" src="https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg" alt=""/>
-                <h4 className="Fz(.8em) Lh(1.15)">Earning, FOMC, Jobs - The week ahead in markets</h4>
-              </div>
-              <div className="Cf"></div>
-            </div>
+            <HomeShowcaseLinks
+              links={[
+                {title: 'Earning, FOMC, Jobs - The week ahead in markets', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/RF.pxZnk28qRNRQXnMrFBg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4dc3ea23000059011fa21d.jpg.cf.jpg'},
+                {title: 'Sweethearts spike in popularity on Amazon', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/CDEEeNmRp4sI8rqZeeoMcQ--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://img.huffingtonpost.com/asset/5c4a2cc323000059011fa178.jpg.cf.jpg'},
+                {title: 'World economy faces some pivotal heath checkups', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/DjwMQdBkUqHNwrZpiW2kkA--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/bloomberg_markets_842/44d044697179b5d84aa2d21658164907'},
+                {title: 'Maduro cancels demand that US diplomats leave', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/Kw67xUEawwQ5UC7Bv_L09Q--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/bloomberg_markets_842/e9ee4509144af3520502691e12a89ccd'},
+                {title: 'Sabic profit misses as product prices decline', imageUrl: 'https://s.yimg.com/uu/api/res/1.2/RG9vmtE1c5tDTyLe3X9vyA--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en-US/homerun/bloomberg_markets_842/c5b9dcee42606ddc1dd4599e04e8f4da'},
+              ]}
+            />
 
             {/* news with picture */}
             <div>
