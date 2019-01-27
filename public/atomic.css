@@ -223,9 +223,6 @@
 .Ta\(end\) {
   text-align: right;
 }
-.HomeNewsListItem:hover .HomeNewsListItem\:h_Td\(u\) {
-  text-decoration: underline;
-}
 .Td\(u\)\:h:hover {
   text-decoration: underline;
 }

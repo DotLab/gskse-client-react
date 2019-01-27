@@ -2,16 +2,16 @@ import React from 'react';
 
 export default function(props) {
   const {imageUrl, category, source, time, title, excerpt} = props;
-  return <div className="HomeNewsListItem Cur(p) Mb(10px)">
-    {imageUrl && <div className="Fl(start) W(20%) Pend(10px) Mt(6px)">
-      <img className="W(100%) Bxsh($cardShadow)" src={imageUrl} alt={title}/>
+  return <div className="Mb(10px)">
+    {imageUrl && <div className="Fl(start) W(20%) Pend(10px) Mt(6px) Cur(p)">
+      <img className="W(100%) Bxsh($cardShadow) Bdrs(4px)" src={imageUrl} alt={title}/>
     </div>}
     <div className={'Fl(start) ' + (imageUrl ? 'W(75%)' : 'W(95%)')}>
       <div className="Mb(0)">
-        <span className="C(dodgerblue) Fw(b) Mend(10px)">{category}</span>
+        <span className="C(dodgerblue) Fw(b) Mend(10px) Cur(p) Td(u):h">{category}</span>
         <span className="C(dimgray)">{source} • {time}</span>
       </div>
-      <h3 className="Lh(1.15) Mb(4px) HomeNewsListItem:h_Td(u)">{title}</h3>
+      <h3 className="Lh(1.15) Mb(4px) Cur(p) C(dodgerblue):h">{title}</h3>
       <p className="Lh(1.15) Mb(0)">{excerpt}</p>
     </div>
     <div className="Fl(start) W(5%) Pos(r)">
