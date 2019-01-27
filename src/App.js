@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link, Switch, withRouter} from 'react-router-dom';
+import {Route, Link, NavLink, Switch, withRouter} from 'react-router-dom';
 
 import Home from './Home';
 import Join from './Join';
@@ -50,8 +50,8 @@ class App extends Component {
               </select>
             </span>
           </span> : <span className="Pos(a) End(40px) B(10px)">
-            <Link className="Fw(b) Mstart(20px)" to="/login">Sign in</Link>
-            <Link className="Fw(b) Mstart(20px)" to="/join">Sign up</Link>
+            <NavLink className="Fw(b) Mstart(20px)" activeClassName="C(dodgerblue)" to="/login">Sign in</NavLink>
+            <NavLink className="Fw(b) Mstart(20px)" activeClassName="C(dodgerblue)" to="/join">Sign up</NavLink>
           </span>}
         </div>
       </div>
@@ -59,10 +59,10 @@ class App extends Component {
       {/* navbar */}
       <div className="Bgc(aliceblue) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a)">
-          <Link className="Fw(b) Lh(2) Mend(30px)" to="/">Finance Home</Link>
-          <Link className="Fw(b) Lh(2) Mend(30px)" to="/watchlists">Watchlists</Link>
-          <Link className="Fw(b) Lh(2) Mend(30px)" to="/portfolios">My Portfolios</Link>
-          <Link className="Fw(b) Lh(2) Mend(30px)" to="/screeners">Screeners</Link>
+          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" exact to="/">Finance Home</NavLink>
+          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/watchlists">Watchlists</NavLink>
+          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/portfolios">My Portfolios</NavLink>
+          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/screeners">Screeners</NavLink>
         </div>
       </div>
 
