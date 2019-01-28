@@ -8,15 +8,11 @@ import Login from './Login';
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
-  return (
-    React.createElement(component, finalProps)
-  );
+  return React.createElement(component, finalProps);
 };
 
 const PropsRoute = ({component, ...rest}) => {
-  return (
-    <Route {...rest} render={(routeProps) => renderMergedProps(component, routeProps, rest)}/>
-  );
+  return <Route {...rest} render={(routeProps) => renderMergedProps(component, routeProps, rest)}/>;
 };
 
 class App extends Component {
@@ -40,7 +36,7 @@ class App extends Component {
   login() {
     const name = document.getElementById('login-name').value;
     const password = document.getElementById('login-password').value;
-    this.socket.emit('login', {name, password}, (user) => {
+    this.socket.emit('cl_login', {name, password}, (user) => {
       this.setState({user});
       this.props.history.push('/');
     });
