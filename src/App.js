@@ -24,7 +24,7 @@ class App extends Component {
     super(props);
     this.history = props.history;
 
-    const socket = io('http://localhost:3001');
+    const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://gskse.com');
     this.socket = socket;
     socket.on('connect', () => {
       this.setState({connected: true});
@@ -85,6 +85,7 @@ class App extends Component {
       {/* header */}
       <div className="Bgc(azure) Pos(st) T(0) Z(1) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a) Pos(r)">
+          <span className="Pos(a) End(100%) Pend(10px) T(10px) Va(tb) Op(.5) Fz(.8em)">{process.env.NODE_ENV}</span>
           <Link className="Mend(40px) Fz(1.5em) Fw(b) Lh(2)" to="/">GSKSE</Link>
           <span className="Va(tb) Mend(10px)">
             <input

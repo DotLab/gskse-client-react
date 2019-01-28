@@ -70,20 +70,20 @@
 .HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
   color: dodgerblue;
 }
+.Cur\(p\) {
+  cursor: pointer;
+}
 .Cur\(a\) {
   cursor: auto;
 }
-.Cur\(p\) {
-  cursor: pointer;
+.D\(ib\) {
+  display: inline-block;
 }
 .D\(b\) {
   display: block;
 }
 .D\(n\) {
   display: none;
-}
-.D\(ib\) {
-  display: inline-block;
 }
 .Blur\(30px\) {
   filter: blur(30px);
@@ -192,14 +192,20 @@
 .T\(0\) {
   top: 0;
 }
+.T\(10px\) {
+  top: 10px;
+}
 .T\(6px\) {
   top: 6px;
 }
-.End\(40px\) {
-  right: 40px;
+.End\(100\%\) {
+  right: 100%;
 }
 .End\(0\) {
   right: 0;
+}
+.End\(40px\) {
+  right: 40px;
 }
 .B\(10px\) {
   bottom: 10px;
@@ -212,6 +218,9 @@
 }
 .Op\(\.4\) {
   opacity: .4;
+}
+.Op\(\.5\) {
+  opacity: .5;
 }
 .Op\(0\) {
   opacity: 0;
