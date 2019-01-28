@@ -1,5 +1,5 @@
 import React from 'react';
-const ReactMarkdown = require('react-markdown');
+import ReactMarkdown from 'react-markdown';
 
 export default class NewArticlePage extends React.Component {
   constructor(props) {
@@ -51,7 +51,9 @@ export default class NewArticlePage extends React.Component {
         <div className="W(50%) H(100%) Fl(start) P(10px) Ovy(s)">
           <h2>Title</h2>
           <hr className="Op(.2)"/>
-          <ReactMarkdown source={this.state.markdown}/>
+          <div className="article">
+            <ReactMarkdown source={this.state.markdown}/>
+          </div>
           <hr className="Op(.2)"/>
           <button className="Mend(10px)">Save</button>
           <button>Cancel</button>
