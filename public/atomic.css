@@ -79,6 +79,9 @@
 .D\(b\) {
   display: block;
 }
+.D\(n\) {
+  display: none;
+}
 .D\(ib\) {
   display: inline-block;
 }
@@ -144,14 +147,11 @@
   margin-left: auto;
   margin-right: auto;
 }
-.My\(20px\) {
-  margin-top: 20px;
-}
-.My\(20px\), .Mb\(20px\) {
-  margin-bottom: 20px;
-}
-.Mt\(10px\) {
+.My\(10px\), .Mt\(10px\) {
   margin-top: 10px;
+}
+.My\(10px\), .Mb\(10px\) {
+  margin-bottom: 10px;
 }
 .Mt\(6px\) {
   margin-top: 6px;
@@ -174,8 +174,8 @@
 .Mb\(0\) {
   margin-bottom: 0;
 }
-.Mb\(10px\) {
-  margin-bottom: 10px;
+.Mb\(20px\) {
+  margin-bottom: 20px;
 }
 .Mb\(4px\) {
   margin-bottom: 4px;

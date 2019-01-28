@@ -32,6 +32,7 @@ class App extends Component {
 
     this.login = this.login.bind(this);
     this.register = this.register.bind(this);
+    this.newArticle = this.newArticle.bind(this);
 
     this.state = {
       connected: false,
@@ -45,25 +46,27 @@ class App extends Component {
     this.history.push('/error');
   }
 
-  register() {
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-
+  register({name, email, password}) {
     this.socket.emit('cl_register', {name, email, password}, (res) => {
       if (res.err) return this.error(res.err);
       this.history.push('/login');
     });
   }
 
-  login() {
-    const nameOrEmail = document.getElementById('login-name-or-email').value;
-    const password = document.getElementById('login-password').value;
-
+  login({nameOrEmail, password}) {
     this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
       if (res.err) return this.error(res.err);
-      this.setState({user: res.data});
+
+      const {name, sessionId} = res.data;
+      this.setState({user: {name, sessionId}});
       this.history.push('/');
+    });
+  }
+
+  newArticle({title, excerpt, coverUrl, isOriginal, sourceTitle, sourceName, sourceUrl, markdown}) {
+    this.socket.emit('cl_new_article', {title, excerpt, coverUrl, isOriginal, sourceTitle, sourceName, sourceUrl, markdown}, (res) => {
+      if (res.err) return this.error(res.err);
+      this.history.push(`/articles/${title}`);
     });
   }
 
@@ -105,7 +108,7 @@ class App extends Component {
                 Kailang v
               <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" defaultValue="none" onChange={(e) => {
                 const value = e.target.value;
-                if (value === 'logout') {
+                if (value === '/logout') {
                   this.logout();
                 } else {
                   history.push(e.target.value);
@@ -143,7 +146,8 @@ class App extends Component {
         <Route path="/" exact component={HomePage} />
         <PropsRoute path="/register" exact component={RegisterPage} register={this.register} />
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
-        <PropsRoute path="/articles/new" exact component={NewArticlePage} />
+        <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
+
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />
       </Switch>
