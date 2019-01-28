@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "atomizer": "atomizer -c ./.atomizer.js -R ./src -o ./public/atomic.css"
+    "atomize": "atomizer -c ./.atomizer.js -R ./src -o ./public/atomic.css",
+    "atomizer": "nodemon --delay 1 --exec \"npm run atomize\""
   },
   "browserslist": [
     ">0.2%",
