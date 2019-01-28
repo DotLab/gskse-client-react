@@ -6,20 +6,44 @@ import Home from './Home';
 import Join from './Join';
 import Login from './Login';
 
+const renderMergedProps = (component, ...rest) => {
+  const finalProps = Object.assign({}, ...rest);
+  return (
+    React.createElement(component, finalProps)
+  );
+};
+
+const PropsRoute = ({component, ...rest}) => {
+  return (
+    <Route {...rest} render={(routeProps) => renderMergedProps(component, routeProps, rest)}/>
+  );
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     const socket = io('http://localhost:3001');
-    window.socket = socket;
+    this.socket = socket;
     socket.on('connect', () => {
       this.setState({connected: true});
     });
+
+    this.login = this.login.bind(this);
 
     this.state = {
       connected: false,
       user: null,
     };
+  }
+
+  login() {
+    const name = document.getElementById('login-name').value;
+    const password = document.getElementById('login-password').value;
+    this.socket.emit('login', {name, password}, (user) => {
+      this.setState({user});
+      this.props.history.push('/');
+    });
   }
 
   render() {
@@ -79,7 +103,7 @@ class App extends Component {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/join" exact component={Join} />
-        <Route path="/login" exact component={Login} />
+        <PropsRoute path="/login" exact component={Login} login={this.login} />
         <Route />
       </Switch>
     </div>;

@@ -1,16 +1,16 @@
 import React from 'react';
 
-export default function Login() {
+export default function Login({login}) {
   return <div className="Mt(10px) Maw(1280px) Mx(a)">
     <div className="W(50%)">
       <h2 className="Fw(lr)">Sign in to Gensokyo Stock Exchange</h2>
       <label className="Fw(b) Mb(5px)">Username or email address</label>
-      <input className="D(b) W(100%) Mb(10px)" type="text"/>
+      <input id="login-name" className="D(b) W(100%) Mb(10px)" type="text"/>
 
       <label className="Fw(b) Mb(5px)">Password</label>
-      <input className="D(b) W(100%) Mb(10px)" type="text"/>
+      <input id="login-password" className="D(b) W(100%) Mb(10px)" type="password"/>
 
-      <button>Sign in</button>
+      <button onClick={login}>Sign in</button>
     </div>
   </div>;
 }
