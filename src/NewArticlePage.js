@@ -101,6 +101,7 @@ export default class NewArticlePage extends React.Component {
 
         <hr className="Op(.2) My(10px)"/>
         <h2>{this.state.title}</h2>
+        <p className="C(gray)">{this.state.excerpt}</p>
         <hr className="Op(.2)"/>
         <div className="article">
           <ReactMarkdown source={this.state.markdown}/>
