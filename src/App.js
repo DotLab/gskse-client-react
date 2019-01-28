@@ -56,9 +56,16 @@ class App extends Component {
   login({nameOrEmail, password}) {
     this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
       if (res.err) return this.error(res.err);
-
       const {name, sessionId} = res.data;
       this.setState({user: {name, sessionId}});
+      this.history.push('/');
+    });
+  }
+
+  logout() {
+    this.socket.emit('cl_logout', (res) => {
+      if (res.err) return this.error(res.err);
+      this.setState({user: null});
       this.history.push('/');
     });
   }
@@ -68,11 +75,6 @@ class App extends Component {
       if (res.err) return this.error(res.err);
       this.history.push(`/articles/${title}`);
     });
-  }
-
-  logout() {
-    this.setState({user: null});
-    this.history.push('/');
   }
 
   render() {
