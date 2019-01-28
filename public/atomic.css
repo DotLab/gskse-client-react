@@ -7,20 +7,23 @@
 .Bdbc\(gainsboro\) {
   border-bottom-color: gainsboro;
 }
-.Bdrs\(5px\) {
-  border-radius: 5px;
-}
 .Bdrs\(4px\) {
   border-radius: 4px;
+}
+.Bdrs\(5px\) {
+  border-radius: 5px;
 }
 .Bgc\(aliceblue\) {
   background-color: aliceblue;
 }
-.Bgc\(azure\) {
-  background-color: azure;
-}
 .Bgc\(black\) {
   background-color: black;
+}
+.Bgc\(white\) {
+  background-color: white;
+}
+.Bgc\(azure\) {
+  background-color: azure;
 }
 .Bgz\(ct\) {
   background-size: contain;
@@ -31,20 +34,17 @@
 .Bxsh\(\$cardShadow\) {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,.15);
 }
-.C\(white\) {
-  color: white;
-}
 .C\(dimgray\) {
   color: dimgray;
-}
-.C\(dodgerblue\) {
-  color: dodgerblue;
 }
 .C\(darkgray\) {
   color: darkgray;
 }
-.C\(red\) {
-  color: red;
+.C\(dodgerblue\) {
+  color: dodgerblue;
+}
+.C\(white\) {
+  color: white;
 }
 .C\(gray\) {
   color: gray;
@@ -52,17 +52,20 @@
 .C\(green\) {
   color: green;
 }
-.C\(gainsboro\)\:h:hover {
-  color: gainsboro;
+.C\(red\) {
+  color: red;
 }
 .C\(red\)\:h:hover {
   color: red;
 }
-.C\(deepskyblue\)\:h:hover {
-  color: deepskyblue;
+.C\(gainsboro\)\:h:hover {
+  color: gainsboro;
 }
 .C\(dodgerblue\)\:h:hover {
   color: dodgerblue;
+}
+.C\(deepskyblue\)\:h:hover {
+  color: deepskyblue;
 }
 .HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
   color: dodgerblue;
@@ -88,11 +91,14 @@
 .Fl\(start\) {
   float: left;
 }
-.Fw\(lr\) {
-  font-weight: lighter;
+.Ff\(\$monoFonts\) {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 .Fw\(b\) {
   font-weight: bold;
+}
+.Fw\(lr\) {
+  font-weight: lighter;
 }
 .Fz\(\.8em\) {
   font-size: .8em;
@@ -103,14 +109,14 @@
 .Fz\(1\.25em\) {
   font-size: 1.25em;
 }
-.Fz\(1\.5em\) {
-  font-size: 1.5em;
+.Fz\(\.75em\) {
+  font-size: .75em;
 }
 .Fz\(1em\) {
   font-size: 1em;
 }
-.Fz\(\.75em\) {
-  font-size: .75em;
+.Fz\(1\.5em\) {
+  font-size: 1.5em;
 }
 .H\(100\%\) {
   height: 100%;
@@ -138,11 +144,20 @@
   margin-left: auto;
   margin-right: auto;
 }
-.Mt\(6px\) {
-  margin-top: 6px;
+.My\(20px\) {
+  margin-top: 20px;
+}
+.My\(20px\), .Mb\(20px\) {
+  margin-bottom: 20px;
 }
 .Mt\(10px\) {
   margin-top: 10px;
+}
+.Mt\(6px\) {
+  margin-top: 6px;
+}
+.Mend\(-10px\) {
+  margin-right: -10px;
 }
 .Mend\(10px\) {
   margin-right: 10px;
@@ -153,17 +168,14 @@
 .Mend\(40px\) {
   margin-right: 40px;
 }
-.Mend\(-10px\) {
-  margin-right: -10px;
-}
 .Mend\(20px\) {
   margin-right: 20px;
 }
 .Mb\(0\) {
   margin-bottom: 0;
 }
-.Mb\(20px\) {
-  margin-bottom: 20px;
+.Mb\(10px\) {
+  margin-bottom: 10px;
 }
 .Mb\(4px\) {
   margin-bottom: 4px;
@@ -171,26 +183,23 @@
 .Mb\(5px\) {
   margin-bottom: 5px;
 }
-.Mb\(10px\) {
-  margin-bottom: 10px;
-}
 .Mstart\(20px\) {
   margin-left: 20px;
 }
 .Maw\(1280px\) {
   max-width: 1280px;
 }
-.T\(6px\) {
-  top: 6px;
-}
 .T\(0\) {
   top: 0;
 }
-.End\(0\) {
-  right: 0;
+.T\(6px\) {
+  top: 6px;
 }
 .End\(40px\) {
   right: 40px;
+}
+.End\(0\) {
+  right: 0;
 }
 .B\(10px\) {
   bottom: 10px;
@@ -201,17 +210,23 @@
 .Start\(0\) {
   left: 0;
 }
-.Op\(\.2\) {
-  opacity: .2;
-}
 .Op\(\.4\) {
   opacity: .4;
 }
 .Op\(0\) {
   opacity: 0;
 }
+.Op\(\.2\) {
+  opacity: .2;
+}
 .Ov\(h\) {
   overflow: hidden;
+}
+.Ovy\(s\) {
+  overflow-y: scroll;
+}
+.P\(10px\) {
+  padding: 10px;
 }
 .P\(35px\) {
   padding: 35px;
@@ -232,7 +247,7 @@
 .Pb\(5px\) {
   padding-bottom: 5px;
 }
-.Pos\(a\) {
+.Pos\(a\), .StretchedBox {
   position: absolute;
 }
 .Pos\(r\) {
@@ -240,6 +255,9 @@
 }
 .Pos\(st\) {
   position: sticky;
+}
+.Rsz\(n\) {
+  resize: none;
 }
 .Ta\(c\) {
   text-align: center;
@@ -259,11 +277,14 @@
 .Whs\(nw\) {
   white-space: nowrap;
 }
-.W\(5\%\) {
-  width: 5%;
-}
 .W\(100\%\) {
   width: 100%;
+}
+.W\(1280px\) {
+  width: 1280px;
+}
+.W\(20\%\) {
+  width: 20%;
 }
 .W\(25\%\) {
   width: 25%;
@@ -274,8 +295,8 @@
 .W\(40\%\) {
   width: 40%;
 }
-.W\(20\%\) {
-  width: 20%;
+.W\(5\%\) {
+  width: 5%;
 }
 .W\(50\%\) {
   width: 50%;
@@ -304,4 +325,10 @@
 }
 .Cf {
   zoom: 1;
+}
+.StretchedBox {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

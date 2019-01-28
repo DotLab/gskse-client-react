@@ -7,6 +7,7 @@ module.exports = {
         'xl': '@media(min-width:1200px)'
     },
     "custom": {
-        "$cardShadow": "0 1px 5px 0 rgba(0,0,0,.15)"
+        "$cardShadow": "0 1px 5px 0 rgba(0,0,0,.15)",
+        "$monoFonts": "SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
     },
 };
