@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Register({register}) {
+export default function({register}) {
   return <div className="Mt(10px) Maw(1280px) Mx(a)">
     <div className="W(50%)">
       <h2 className="Fw(lr)">Create your personal account</h2>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Login({login}) {
+export default function({login}) {
   return <div className="Mt(10px) Maw(1280px) Mx(a)">
     <div className="W(50%)">
       <h2 className="Fw(lr)">Sign in to Gensokyo Stock Exchange</h2>

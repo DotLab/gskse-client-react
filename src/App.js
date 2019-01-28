@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Route, Link, NavLink, Switch, withRouter} from 'react-router-dom';
 import io from 'socket.io-client';
 
-import Home from './Home';
-import Register from './Register';
-import Login from './Login';
-import Error from './Error';
+import HomePage from './HomePage';
+import RegisterPage from './RegisterPage';
+import LoginPage from './LoginPage';
+import ErrorPage from './ErrorPage';
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -89,27 +89,33 @@ class App extends Component {
           {user ? <span className="Pos(a) End(40px) B(10px)">
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
                 New v
-              <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" onChange={(e) => history.push(e.target.value)}>
+              <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" defaultValue="none" onChange={(e) => {
+                history.push(e.target.value);
+                e.target.value = 'none';
+              }}>
+                <option value="none" disabled>New...</option>
                 <option value="/articles/new">New article</option>
                 <option value="/companies/new">New private company</option>
               </select>
             </span>
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
                 Kailang v
-              <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" onChange={(e) => {
+              <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" defaultValue="none" onChange={(e) => {
                 const value = e.target.value;
                 if (value === 'logout') {
                   this.logout();
                 } else {
                   history.push(e.target.value);
                 }
+                e.target.value = 'none';
               }}>
-                <option value="profile">My profile</option>
-                <option value="articles">My articles</option>
-                <option value="companies">My companies</option>
-                <option value="loves">My loves</option>
-                <option value="comments">My comments</option>
-                <option value="logout">Sign out</option>
+                <option value="none" disabled>Signed in as Kailang</option>
+                <option value="/profile">My profile</option>
+                <option value="/articles">My articles</option>
+                <option value="/companies">My companies</option>
+                <option value="/loves">My loves</option>
+                <option value="/comments">My comments</option>
+                <option value="/logout">Sign out</option>
               </select>
             </span>
           </span> : <span className="Pos(a) End(40px) B(10px)">
@@ -122,7 +128,7 @@ class App extends Component {
       {/* navbar */}
       <div className="Bgc(aliceblue) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a)">
-          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" exact to="/">Finance Home</NavLink>
+          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" exact to="/">Finance HomePage</NavLink>
           <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/watchlists">Watchlists</NavLink>
           <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/portfolios">My Portfolios</NavLink>
           <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/screeners">Screeners</NavLink>
@@ -131,10 +137,10 @@ class App extends Component {
 
       {/* main */}
       <Switch>
-        <Route path="/" exact component={Home} />
-        <PropsRoute path="/register" exact component={Register} register={this.register} />
-        <PropsRoute path="/login" exact component={Login} login={this.login} />
-        <PropsRoute path="/error" exact component={Error} error={this.state.error} />
+        <Route path="/" exact component={HomePage} />
+        <PropsRoute path="/register" exact component={RegisterPage} register={this.register} />
+        <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
+        <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />
       </Switch>
     </div>;

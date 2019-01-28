@@ -4,7 +4,7 @@ import HomeShowcase from './HomeShowcase';
 import HomeShowcaseLinkBar from './HomeShowcaseLinkBar';
 import HomeArticleListItem from './HomeArticleListItem';
 
-export default function Home() {
+export default function() {
   return <div className="Mt(10px)">
     <div className="Maw(1280px) Mx(a)">
       {/* left column */}
