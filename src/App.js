@@ -3,8 +3,9 @@ import {Route, Link, NavLink, Switch, withRouter} from 'react-router-dom';
 import io from 'socket.io-client';
 
 import Home from './Home';
-import Join from './Join';
+import Register from './Register';
 import Login from './Login';
+import Error from './Error';
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -18,6 +19,7 @@ const PropsRoute = ({component, ...rest}) => {
 class App extends Component {
   constructor(props) {
     super(props);
+    this.history = props.history;
 
     const socket = io('http://localhost:3001');
     this.socket = socket;
@@ -26,6 +28,7 @@ class App extends Component {
     });
 
     this.login = this.login.bind(this);
+    this.register = this.register.bind(this);
 
     this.state = {
       connected: false,
@@ -33,20 +36,44 @@ class App extends Component {
     };
   }
 
-  login() {
-    const name = document.getElementById('login-name').value;
-    const password = document.getElementById('login-password').value;
-    this.socket.emit('cl_login', {name, password}, (user) => {
-      this.setState({user});
-      this.props.history.push('/');
+  error(err) {
+    const message = JSON.stringify(err, null, '  ');
+    this.setState({error: message});
+    this.history.push('/error');
+  }
+
+  register() {
+    const name = document.getElementById('register-name').value;
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+
+    this.socket.emit('cl_register', {name, email, password}, (res) => {
+      if (res.err) return this.error(res.err);
+      this.history.push('/login');
     });
+  }
+
+  login() {
+    const nameOrEmail = document.getElementById('login-name-or-email').value;
+    const password = document.getElementById('login-password').value;
+
+    this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
+      if (res.err) return this.error(res.err);
+      this.setState({user: res.data});
+      this.history.push('/');
+    });
+  }
+
+  logout() {
+    this.setState({user: null});
+    this.history.push('/');
   }
 
   render() {
     const history = this.props.history;
     const {connected, user} = this.state;
 
-    return <div className="Mih(1000px)">
+    return <div>
       {/* header */}
       <div className="Bgc(azure) Pos(st) T(0) Z(1) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a) Pos(r)">
@@ -69,7 +96,14 @@ class App extends Component {
             </span>
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
                 Kailang v
-              <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" onChange={(e) => history.push(e.target.value)}>
+              <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" onChange={(e) => {
+                const value = e.target.value;
+                if (value === 'logout') {
+                  this.logout();
+                } else {
+                  history.push(e.target.value);
+                }
+              }}>
                 <option value="profile">My profile</option>
                 <option value="articles">My articles</option>
                 <option value="companies">My companies</option>
@@ -80,7 +114,7 @@ class App extends Component {
             </span>
           </span> : <span className="Pos(a) End(40px) B(10px)">
             <NavLink className="Fw(b) Mstart(20px)" activeClassName="C(dodgerblue)" to="/login">Sign in</NavLink>
-            <NavLink className="Fw(b) Mstart(20px)" activeClassName="C(dodgerblue)" to="/join">Sign up</NavLink>
+            <NavLink className="Fw(b) Mstart(20px)" activeClassName="C(dodgerblue)" to="/register">Sign up</NavLink>
           </span>}
         </div>
       </div>
@@ -98,8 +132,9 @@ class App extends Component {
       {/* main */}
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/join" exact component={Join} />
+        <PropsRoute path="/register" exact component={Register} register={this.register} />
         <PropsRoute path="/login" exact component={Login} login={this.login} />
+        <PropsRoute path="/error" exact component={Error} error={this.state.error} />
         <Route />
       </Switch>
     </div>;

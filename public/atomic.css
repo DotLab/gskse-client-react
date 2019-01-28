@@ -7,14 +7,17 @@
 .Bdbc\(gainsboro\) {
   border-bottom-color: gainsboro;
 }
+.Bdrs\(5px\) {
+  border-radius: 5px;
+}
 .Bdrs\(4px\) {
   border-radius: 4px;
 }
-.Bgc\(azure\) {
-  background-color: azure;
-}
 .Bgc\(aliceblue\) {
   background-color: aliceblue;
+}
+.Bgc\(azure\) {
+  background-color: azure;
 }
 .Bgc\(black\) {
   background-color: black;
@@ -28,17 +31,20 @@
 .Bxsh\(\$cardShadow\) {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,.15);
 }
-.C\(darkgray\) {
-  color: darkgray;
-}
-.C\(dodgerblue\) {
-  color: dodgerblue;
+.C\(white\) {
+  color: white;
 }
 .C\(dimgray\) {
   color: dimgray;
 }
-.C\(white\) {
-  color: white;
+.C\(dodgerblue\) {
+  color: dodgerblue;
+}
+.C\(darkgray\) {
+  color: darkgray;
+}
+.C\(red\) {
+  color: red;
 }
 .C\(gray\) {
   color: gray;
@@ -46,14 +52,11 @@
 .C\(green\) {
   color: green;
 }
-.C\(red\) {
-  color: red;
+.C\(gainsboro\)\:h:hover {
+  color: gainsboro;
 }
 .C\(red\)\:h:hover {
   color: red;
-}
-.C\(gainsboro\)\:h:hover {
-  color: gainsboro;
 }
 .C\(deepskyblue\)\:h:hover {
   color: deepskyblue;
@@ -79,17 +82,17 @@
 .Blur\(30px\) {
   filter: blur(30px);
 }
-.Fl\(start\) {
-  float: left;
-}
 .Fl\(end\) {
   float: right;
 }
-.Fw\(b\) {
-  font-weight: bold;
+.Fl\(start\) {
+  float: left;
 }
 .Fw\(lr\) {
   font-weight: lighter;
+}
+.Fw\(b\) {
+  font-weight: bold;
 }
 .Fz\(\.8em\) {
   font-size: .8em;
@@ -100,14 +103,14 @@
 .Fz\(1\.25em\) {
   font-size: 1.25em;
 }
-.Fz\(\.75em\) {
-  font-size: .75em;
+.Fz\(1\.5em\) {
+  font-size: 1.5em;
 }
 .Fz\(1em\) {
   font-size: 1em;
 }
-.Fz\(1\.5em\) {
-  font-size: 1.5em;
+.Fz\(\.75em\) {
+  font-size: .75em;
 }
 .H\(100\%\) {
   height: 100%;
@@ -127,13 +130,13 @@
 .Lh\(2\) {
   line-height: 2;
 }
-.Mx\(a\) {
-  margin-left: auto;
-  margin-right: auto;
-}
 .Mx\(5px\) {
   margin-left: 5px;
   margin-right: 5px;
+}
+.Mx\(a\) {
+  margin-left: auto;
+  margin-right: auto;
 }
 .Mt\(6px\) {
   margin-top: 6px;
@@ -159,8 +162,8 @@
 .Mb\(0\) {
   margin-bottom: 0;
 }
-.Mb\(10px\) {
-  margin-bottom: 10px;
+.Mb\(20px\) {
+  margin-bottom: 20px;
 }
 .Mb\(4px\) {
   margin-bottom: 4px;
@@ -168,8 +171,8 @@
 .Mb\(5px\) {
   margin-bottom: 5px;
 }
-.Mb\(20px\) {
-  margin-bottom: 20px;
+.Mb\(10px\) {
+  margin-bottom: 10px;
 }
 .Mstart\(20px\) {
   margin-left: 20px;
@@ -177,20 +180,17 @@
 .Maw\(1280px\) {
   max-width: 1280px;
 }
-.Mih\(1000px\) {
-  min-height: 1000px;
-}
 .T\(6px\) {
   top: 6px;
 }
 .T\(0\) {
   top: 0;
 }
-.End\(40px\) {
-  right: 40px;
-}
 .End\(0\) {
   right: 0;
+}
+.End\(40px\) {
+  right: 40px;
 }
 .B\(10px\) {
   bottom: 10px;
@@ -215,6 +215,9 @@
 }
 .P\(35px\) {
   padding: 35px;
+}
+.P\(5px\) {
+  padding: 5px;
 }
 .Py\(4px\) {
   padding-top: 4px;
