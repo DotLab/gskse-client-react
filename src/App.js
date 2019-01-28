@@ -5,6 +5,9 @@ import io from 'socket.io-client';
 import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
+
+import NewArticlePage from './NewArticlePage';
+
 import ErrorPage from './ErrorPage';
 
 const renderMergedProps = (component, ...rest) => {
@@ -128,7 +131,7 @@ class App extends Component {
       {/* navbar */}
       <div className="Bgc(aliceblue) Bxsh($cardShadow)">
         <div className="Maw(1280px) Mx(a)">
-          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" exact to="/">Finance HomePage</NavLink>
+          <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" exact to="/">Finance Home</NavLink>
           <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/watchlists">Watchlists</NavLink>
           <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/portfolios">My Portfolios</NavLink>
           <NavLink className="Fw(b) Lh(2) Mend(30px)" activeClassName="C(dodgerblue)" to="/screeners">Screeners</NavLink>
@@ -140,6 +143,7 @@ class App extends Component {
         <Route path="/" exact component={HomePage} />
         <PropsRoute path="/register" exact component={RegisterPage} register={this.register} />
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
+        <PropsRoute path="/articles/new" exact component={NewArticlePage} />
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />
       </Switch>
