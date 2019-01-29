@@ -139,6 +139,10 @@
 .Lh\(2\) {
   line-height: 2;
 }
+.Mx\(2px\) {
+  margin-left: 2px;
+  margin-right: 2px;
+}
 .Mx\(5px\) {
   margin-left: 5px;
   margin-right: 5px;
@@ -222,11 +226,11 @@
 .Op\(\.5\) {
   opacity: .5;
 }
-.Op\(0\) {
-  opacity: 0;
-}
 .Op\(\.2\) {
   opacity: .2;
+}
+.Op\(0\) {
+  opacity: 0;
 }
 .Ov\(h\) {
   overflow: hidden;

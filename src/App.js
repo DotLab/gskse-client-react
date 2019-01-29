@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 
+import ArticleListPage from './ArticleListPage';
 import NewArticlePage from './NewArticlePage';
 
 import ErrorPage from './ErrorPage';
@@ -32,6 +33,8 @@ class App extends Component {
 
     this.login = this.login.bind(this);
     this.register = this.register.bind(this);
+
+    this.getArticles = this.getArticles.bind(this);
     this.newArticle = this.newArticle.bind(this);
 
     this.state = {
@@ -56,8 +59,8 @@ class App extends Component {
   login({nameOrEmail, password}) {
     this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
       if (res.err) return this.error(res.err);
-      const {name, sessionId} = res.data;
-      this.setState({user: {name, sessionId}});
+      const {id, name} = res.data;
+      this.setState({user: {id, name}});
       this.history.push('/');
     });
   }
@@ -74,6 +77,15 @@ class App extends Component {
     this.socket.emit('cl_new_article', {title, excerpt, coverUrl, isOriginal, sourceTitle, sourceName, sourceUrl, markdown}, (res) => {
       if (res.err) return this.error(res.err);
       this.history.push(`/articles/${title}`);
+    });
+  }
+
+  getArticles({creatorId}) {
+    return new Promise((resolve, reject) => {
+      this.socket.emit('cl_get_articles', {creatorId}, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
     });
   }
 
@@ -149,6 +161,7 @@ class App extends Component {
         <Route path="/" exact component={HomePage} />
         <PropsRoute path="/register" exact component={RegisterPage} register={this.register} />
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
+        <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
 
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
