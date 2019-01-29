@@ -24,7 +24,7 @@ class App extends Component {
     super(props);
     this.history = props.history;
 
-    const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://gskse.com');
+    const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'http://gskse.com');
     this.socket = socket;
     socket.on('connect', () => {
       this.setState({connected: true});
