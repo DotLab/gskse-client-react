@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - lts/*
+addons:
+  ssh_known_hosts: 35.233.171.1
 script:
   - npm run build
 before_deploy:
