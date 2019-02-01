@@ -73,9 +73,25 @@ export default function() {
       <ReactMarkdown source={sample2}/>
     </div>
 
-    <hr className="W(600px) Mx(a) Op(.3) Mb(20px)"/>
 
     <div className="W(800px) Mx(a)">
+      <hr className="Op(.3) Mb(20px)"/>
+      <div className="Fl(end) C(gray) Lh(1.875em)">
+        <span className="Mend(20px)"><b>U</b> 13K</span>
+        <span className="Mend(20px)"><b>D</b> 74</span>
+        <span className="Mend(20px)"><b>L</b> 134K</span>
+      </div>
+      <div className="Fz(1.25em) Mb(20px)">2,458 Views</div>
+      <div className="Mb(20px) Cf">
+        <div className="W(10%) Fl(start)">
+          <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
+        </div>
+        <div className="W(90%) Fl(start) Pstart(20px)">
+          <div className="Fw(b)">Pamuk Sekeri</div>
+          <div className="C(gray)">Published 1 year ago</div>
+        </div>
+      </div>
+      <hr className="Op(.3) Mb(20px)"/>
       <div className="Fz(1.25em) Mb(20px)">2,458 Comments</div>
       <div className="Mb(20px) Cf">
         <div className="W(10%) Fl(start)">
@@ -96,7 +112,7 @@ export default function() {
         <div className="W(90%) Fl(start) Pstart(20px)">
           <div className="Lh(1) Mb(5px)"><span className="Fw(b)">Pamuk Sekeri</span> <span className="C(gray)">1 year ago</span></div>
           <p className="Mb(10px) Whs(pw)">{text}</p>
-          <div className="C(gray)"><span className="Mend(10px)">U 2.1K</span> <span className="Mend(20px)">D</span> <span>Reply</span></div>
+          <div className="C(gray)"><span className="Mend(10px)"><b>U</b> 2.1K</span> <span className="Mend(20px) Fw(b)">D</span> <span>Reply</span></div>
           {/* <div className="Fw(b)">View 43 replies v</div> */}
           <div className="Fw(b)">Hide replies ^</div>
           <div className="Mt(10px)">
@@ -107,7 +123,7 @@ export default function() {
               <div className="W(90%) Fl(start) Pstart(20px)">
                 <div className="Lh(1) Mb(5px)"><span className="Fw(b)">Pamuk Sekeri</span> <span className="C(gray)">1 year ago</span></div>
                 <p className="Mb(10px) Whs(pw)">{text}</p>
-                <div className="C(gray)"><span className="Mend(10px)">U 2.1K</span> <span className="Mend(20px)">D</span> <span>Reply</span></div>
+                <div className="C(gray)"><span className="Mend(10px)"><b>U</b> 2.1K</span> <span className="Mend(20px) Fw(b)">D</span> <span>Reply</span></div>
               </div>
             </div>
             <div className="Mb(10px) Cf">
@@ -117,7 +133,7 @@ export default function() {
               <div className="W(90%) Fl(start) Pstart(20px)">
                 <div className="Lh(1) Mb(5px)"><span className="Fw(b)">Pamuk Sekeri</span> <span className="C(gray)">1 year ago</span></div>
                 <p className="Mb(10px) Whs(pw)">{text}</p>
-                <div className="C(gray)"><span className="Mend(10px)">U 2.1K</span> <span className="Mend(20px)">D</span> <span>Reply</span></div>
+                <div className="C(gray)"><span className="Mend(10px)"><b>U</b> 2.1K</span> <span className="Mend(20px) Fw(b)">D</span> <span>Reply</span></div>
               </div>
             </div>
           </div>
