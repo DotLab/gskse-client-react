@@ -7,10 +7,15 @@ export class ReplyListItem extends React.Component {
     super(props);
 
     this.onReplyClick = () => this.setState({isReplying: !this.state.isReplying});
+    this.onSendClick = this.onSendClick.bind(this);
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
     this.state = {isReplying: false, text: `@${this.props.authorName} `, textLineCount: 1};
+  }
+
+  onSendClick() {
+    this.props.onReplySendClick(this.state.text);
   }
 
   render() {
@@ -48,7 +53,7 @@ export class ReplyListItem extends React.Component {
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onReplyClick}>Cancel</button>
-              <button>Comment</button>
+              <button onClick={this.onSendClick}>Comment</button>
             </div>
           </div>
         </div>}
@@ -64,10 +69,12 @@ export default class ArticleCommentListItem extends React.Component {
     this.onReplyClick = () => this.setState({isReplying: !this.state.isReplying});
 
     this.onShowReplyClick = this.onShowReplyClick.bind(this);
+    this.onSendClick = this.onSendClick.bind(this);
+    this.onReplySendClick = this.onReplySendClick.bind(this);
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
-    this.state = {isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
+    this.state = {replyCount: props.replyCount, isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
   }
 
   onShowReplyClick() {
@@ -78,8 +85,23 @@ export default class ArticleCommentListItem extends React.Component {
     }
   }
 
+  onSendClick() {
+    const text = this.state.text.trim();
+    if (text) {
+      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({replyCount: replies.length, replies, doShowReplies: true}));
+    }
+  }
+
+  onReplySendClick(text) {
+    text = text.trim();
+    console.log(text);
+    if (text) {
+      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({replyCount: replies.length, replies, doShowReplies: true}));
+    }
+  }
+
   render() {
-    const {authorName, date, text, voteCount, replyCount} = this.props;
+    const {authorName, date, text, voteCount} = this.props;
     return <div className="Mb(20px) Cf">
       {/* left avatar icon */}
       <div className="W(10%) Fl(start)">
@@ -113,17 +135,17 @@ export default class ArticleCommentListItem extends React.Component {
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onReplyClick}>Cancel</button>
-              <button>Comment</button>
+              <button onClick={this.onSendClick}>Comment</button>
             </div>
           </div>
         </div>}
         {/* view reply */}
-        {replyCount > 0 && <span className="Cur(p) Td(u):h Fw(b) My(5px)" onClick={this.onShowReplyClick}>
-          {this.state.doShowReplies ? 'Hide replies ^' : (replyCount === 1 ? 'View a reply' : `View ${formatNumber(replyCount)} replies v`)}
+        {this.state.replyCount > 0 && <span className="Cur(p) Td(u):h Fw(b) My(5px)" onClick={this.onShowReplyClick}>
+          {this.state.doShowReplies ? 'Hide replies ^' : (this.state.replyCount === 1 ? 'View a reply' : `View ${formatNumber(this.state.replyCount)} replies v`)}
         </span>}
         {/* reply list */}
-        {replyCount > 0 && this.state.doShowReplies && this.state.replies && <div className="Mt(10px)">
-          {this.state.replies.map((reply, i) => <ReplyListItem {...reply} key={i}/>)}
+        {this.state.replyCount > 0 && this.state.doShowReplies && this.state.replies && <div className="Mt(10px)">
+          {this.state.replies.map((reply, i) => <ReplyListItem {...reply} key={i} onReplySendClick={this.onReplySendClick}/>)}
         </div>}
       </div>
     </div>;

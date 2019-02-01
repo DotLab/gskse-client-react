@@ -39,11 +39,16 @@ class App extends Component {
     this.newArticle = this.newArticle.bind(this);
     this.getArticle = this.getArticle.bind(this);
     this.getComments = this.getComments.bind(this);
+    this.postComment = this.postComment.bind(this);
 
     this.state = {
       connected: false,
       user: null,
     };
+  }
+
+  componentDidMount() {
+    this.login({nameOrEmail: 'Kailang', password: '123'});
   }
 
   error(err) {
@@ -59,12 +64,12 @@ class App extends Component {
     });
   }
 
-  login({nameOrEmail, password}) {
+  login({nameOrEmail, password, redirect}) {
     this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
       if (res.err) return this.error(res.err);
       const {id, name} = res.data;
       this.setState({user: {id, name}});
-      this.history.push('/');
+      if (redirect) this.history.push(redirect);
     });
   }
 
@@ -93,7 +98,7 @@ class App extends Component {
   }
 
   getArticle({title}) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.socket.emit('cl_get_article', {title}, (res) => {
         if (res.err) return this.error(res.err);
         resolve(res.data);
@@ -102,8 +107,19 @@ class App extends Component {
   }
 
   getComments({targetId}) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.socket.emit('cl_get_comments', {targetId}, (res) => {
+        if (res.err) return this.error(res.err);
+        console.log(res.data);
+        resolve(res.data);
+      });
+    });
+  }
+
+  postComment({targetId, text}) {
+    console.log(targetId);
+    return new Promise((resolve)=> {
+      this.socket.emit('cl_post_comment', {targetId, text}, (res) => {
         if (res.err) return this.error(res.err);
         console.log(res.data);
         resolve(res.data);
@@ -185,7 +201,7 @@ class App extends Component {
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
         <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
-        <PropsRoute path="/articles/:title" exact component={ArticlePage} getArticle={this.getArticle} getComments={this.getComments}/>
+        <PropsRoute path="/articles/:title" exact component={ArticlePage} getArticle={this.getArticle} getComments={this.getComments} postComment={this.postComment}/>
 
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />

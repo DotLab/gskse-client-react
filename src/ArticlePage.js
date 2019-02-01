@@ -17,6 +17,7 @@ export default class ArticlePage extends React.Component {
     this.onTextareaChange = onTextareaChange.bind(this);
 
     this.onCancelClick = () => this.setState({text: '', textLineCount: 1});
+    this.onSendClick = this.onSendClick.bind(this);
 
     this.state = {text: '', textLineCount: 1};
   }
@@ -33,10 +34,17 @@ export default class ArticlePage extends React.Component {
     });
   }
 
+  onSendClick() {
+    const text = this.state.text.trim();
+    if (text) {
+      this.props.postComment({targetId: this.state.id, text}).then((comments) => this.setState({commentCount: comments.length, comments}));
+    }
+  }
+
   render() {
     return <div className="Mt(20px)">
       <div className="W(600px) Mx(a)">
-        <div className="Lh(1) Mb(40px)">
+        <div className="Lh(1.15) Mb(40px)">
           <div className="C(dodgerblue)">Update</div>
           <div className="C(gray)">{formatDate(this.state.date)}</div>
         </div>
@@ -85,12 +93,12 @@ export default class ArticlePage extends React.Component {
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onCancelClick}>Cancel</button>
-              <button>Comment</button>
+              <button onClick={this.onSendClick}>Comment</button>
             </div>
           </div>
         </div>
         {this.state.comments && <div>
-          {this.state.comments.map((comment, i) => <ArticleCommentListItem {...comment} key={i} getComments={this.props.getComments}/>)}
+          {this.state.comments.map((comment, i) => <ArticleCommentListItem {...comment} key={i} getComments={this.props.getComments} postComment={this.props.postComment}/>)}
         </div>}
       </div>
     </div>;

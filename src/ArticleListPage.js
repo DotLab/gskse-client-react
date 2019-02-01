@@ -32,7 +32,7 @@ export default class ArticleListPage extends React.Component {
     return <div className="Mt(10px) W(1280px) Mx(a)">
       <h2 className="Fw(lr) Mb(10px)">My Articles</h2>
       <div className="W(50%)">
-        {this.state.articles.map((article) => <ArticleListItem {...article}/>)}
+        {this.state.articles.map((article, i) => <ArticleListItem {...article} key={i}/>)}
       </div>
     </div>;
   }
