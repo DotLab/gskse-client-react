@@ -63,11 +63,19 @@ export default class ArticleCommentListItem extends React.Component {
 
     this.onReplyClick = () => this.setState({isReplying: !this.state.isReplying});
 
-    this.onShowReplyClick = () => this.setState({doShowReplies: !this.state.doShowReplies});
+    this.onShowReplyClick = this.onShowReplyClick.bind(this);
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
     this.state = {isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
+  }
+
+  onShowReplyClick() {
+    if (!this.state.replies) {
+      this.props.getComments({targetId: this.props.id}).then((replies) => this.setState({replies, doShowReplies: !this.state.doShowReplies}));
+    } else {
+      this.setState({doShowReplies: !this.state.doShowReplies});
+    }
   }
 
   render() {
@@ -101,7 +109,7 @@ export default class ArticleCommentListItem extends React.Component {
           {/* right content */}
           <div className="W(90%) Fl(start) Pstart(20px)">
             {/* textarea */}
-            <textarea className="W(100%)" placeholder="Add a public replay..." name="text" rows={this.state.textLineCount} defaultValue={this.state.text} onChange={this.onTextareaChange}/>
+            <textarea className="W(100%)" placeholder="Add a public comment..." name="text" rows={this.state.textLineCount} defaultValue={this.state.text} onChange={this.onTextareaChange}/>
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onReplyClick}>Cancel</button>
@@ -114,25 +122,8 @@ export default class ArticleCommentListItem extends React.Component {
           {this.state.doShowReplies ? 'Hide replies ^' : (replyCount === 1 ? 'View a reply' : `View ${formatNumber(replyCount)} replies v`)}
         </span>}
         {/* reply list */}
-        {this.state.doShowReplies && <div className="Mt(10px)">
-          <ReplyListItem
-            authorName="Kailang"
-            text="Halksdjf laks dfkas djf."
-            date={new Date()}
-            voteCount={0}
-          />
-          <ReplyListItem
-            authorName="Kailang"
-            text="Halksdjf laks dfkas djf."
-            date={new Date()}
-            voteCount={12342}
-          />
-          <ReplyListItem
-            authorName="Kailang"
-            text="Halksdjf laks dfkas djf."
-            date={new Date()}
-            voteCount={121435}
-          />
+        {replyCount > 0 && this.state.doShowReplies && this.state.replies && <div className="Mt(10px)">
+          {this.state.replies.map((reply, i) => <ReplyListItem {...reply} key={i}/>)}
         </div>}
       </div>
     </div>;

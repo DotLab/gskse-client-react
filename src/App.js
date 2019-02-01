@@ -37,6 +37,8 @@ class App extends Component {
 
     this.getArticles = this.getArticles.bind(this);
     this.newArticle = this.newArticle.bind(this);
+    this.getArticle = this.getArticle.bind(this);
+    this.getComments = this.getComments.bind(this);
 
     this.state = {
       connected: false,
@@ -85,6 +87,25 @@ class App extends Component {
     return new Promise((resolve, reject) => {
       this.socket.emit('cl_get_articles', {creatorId}, (res) => {
         if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
+  getArticle({title}) {
+    return new Promise((resolve, reject) => {
+      this.socket.emit('cl_get_article', {title}, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
+  getComments({targetId}) {
+    return new Promise((resolve, reject) => {
+      this.socket.emit('cl_get_comments', {targetId}, (res) => {
+        if (res.err) return this.error(res.err);
+        console.log(res.data);
         resolve(res.data);
       });
     });
@@ -164,7 +185,7 @@ class App extends Component {
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
         <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
-        <PropsRoute path="/articles/:title" exact component={ArticlePage} />
+        <PropsRoute path="/articles/:title" exact component={ArticlePage} getArticle={this.getArticle} getComments={this.getComments}/>
 
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />
