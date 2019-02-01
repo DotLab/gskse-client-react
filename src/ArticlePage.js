@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import ArticleCommentListItem, {ReplyListItem} from './ArticleCommentListItem';
+import ArticleCommentListItem from './ArticleCommentListItem';
+
+import {avatarIconUrl, onTextareaChange} from './utils';
 
 // const sample = `
 // Today, Apple opens its doors to 11 female-founded app development companies for the inaugural session of Entrepreneur Camp. The program is designed to provide female app creators with the tools needed to thrive in today’s global app economy. Since the App Store launched in 2008, developers have earned $120 billion, with more than a quarter of that in the past year alone.
@@ -57,95 +59,89 @@ const text = `0:00 Flowering Night (Night of Nights ver.)
 2:45 Native Faith
 3:05 Beloved Tomboyish Girl`;
 
-export default function() {
-  return <div className="Mt(20px)">
-    <div className="W(600px) Mx(a)">
-      <div className="Lh(1) Mb(40px)">
-        <div className="C(dodgerblue)">Update</div>
-        <div className="C(gray)">January 28, 2019</div>
-      </div>
-      <h2 className="Fz(3em) Lh(1.15) Mb(40px)">Apple Entrepreneur Camp kicks off as app developer earnings hit new record</h2>
-      <hr className="Op(.3) Mb(40px)"/>
-      <div className="Mb(40px) Fz(1.5em)">Inaugural Session Provides Unprecedented Access to Apple Labs, Engineers, Business and Marketing Expertise</div>
-    </div>
+export default class ArticlePage extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <img className="W(800px) D(b) Mx(a) Bxsh($cardShadow) Bdrs(5px) Mb(40px)" src="https://www.apple.com/newsroom/images/values/diversity-inclusion/Apple-Entrepreneur-camp-kicks-off-01282019_big.jpg.large.jpg" alt=""/>
+    this.onTextareaChange = onTextareaChange.bind(this);
 
-    <div className="article W(600px) Mx(a)">
-      <ReactMarkdown source={sample2}/>
-    </div>
+    this.onCancelClick = () => this.setState({text: '', textLineCount: 1});
 
-
-    <div className="W(800px) Mx(a)">
-      <hr className="Op(.3) Mb(20px)"/>
-      <div className="Fl(end) C(gray) Lh(1.875em)">
-        <span className="Mend(20px)"><b>U</b> 13K</span>
-        <span className="Mend(20px)"><b>D</b> 74</span>
-        <span className="Mend(20px)"><b>L</b> 134K</span>
-      </div>
-      <div className="Fz(1.25em) Mb(20px)">2,458 Views</div>
-      <div className="Mb(20px) Cf">
-        <div className="W(10%) Fl(start)">
-          <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
+    this.state = {text: '', textLineCount: 1};
+  }
+  render() {
+    return <div className="Mt(20px)">
+      <div className="W(600px) Mx(a)">
+        <div className="Lh(1) Mb(40px)">
+          <div className="C(dodgerblue)">Update</div>
+          <div className="C(gray)">January 28, 2019</div>
         </div>
-        <div className="W(90%) Fl(start) Pstart(20px)">
-          <div className="Fw(b)">Pamuk Sekeri</div>
-          <div className="C(gray)">Published 1 year ago</div>
-        </div>
+        <h2 className="Fz(3em) Lh(1.15) Mb(40px)">Apple Entrepreneur Camp kicks off as app developer earnings hit new record</h2>
+        <hr className="Op(.3) Mb(40px)"/>
+        <div className="Mb(40px) Fz(1.5em)">Inaugural Session Provides Unprecedented Access to Apple Labs, Engineers, Business and Marketing Expertise</div>
       </div>
-      <hr className="Op(.3) Mb(20px)"/>
-      <div className="Fz(1.25em) Mb(20px)">2,458 Comments</div>
-      <div className="Mb(20px) Cf">
-        <div className="W(10%) Fl(start)">
-          <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
+
+      <img className="W(800px) D(b) Mx(a) Bxsh($cardShadow) Bdrs(5px) Mb(40px)" src="https://www.apple.com/newsroom/images/values/diversity-inclusion/Apple-Entrepreneur-camp-kicks-off-01282019_big.jpg.large.jpg" alt=""/>
+
+      <div className="article W(600px) Mx(a)">
+        <ReactMarkdown source={sample2}/>
+      </div>
+
+      <div className="W(800px) Mx(a)">
+        {/* views */}
+        <hr className="Op(.3) Mb(20px)"/>
+        <div className="Fl(end) C(gray) Lh(1.875em)">
+          <span className="Mend(20px)"><b>U</b> 13K</span>
+          <span className="Mend(20px)"><b>D</b> 74</span>
+          <span className="Mend(20px)"><b>L</b> 134K</span>
         </div>
-        <div className="W(90%) Fl(start) Pstart(20px)">
-          <textarea rows="1" className="W(100%) Mb(5px)" placeholder="Commenting publicly as Kailang"/>
-          <div className="Fl(end)">
-            <button className="Mend(10px)">Cancel</button>
-            <button>Comment</button>
+        <div className="Fz(1.25em) Mb(20px)">2,458 Views</div>
+        {/* creator */}
+        <div className="Mb(20px) Cf">
+          <div className="W(10%) Fl(start)">
+            <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src={avatarIconUrl} alt=""/>
+          </div>
+          <div className="W(90%) Fl(start) Pstart(20px)">
+            <div className="Fw(b)">Pamuk Sekeri</div>
+            <div className="C(gray)">Published 1 year ago</div>
           </div>
         </div>
-      </div>
-      <ArticleCommentListItem
-        authorName="Kailang"
-        date={new Date(new Date().getTime() - 500000000)}
-        text="asKj alksj dflkas dlfkaj skdf sdf"
-        voteCount={1234332}
-        replyCount={23}
-      />
-      <div className="Mb(20px) Cf">
-        <div className="W(10%) Fl(start)">
-          <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
-        </div>
-        <div className="W(90%) Fl(start) Pstart(20px)">
-          <div className="Lh(1) Mb(5px)"><span className="Fw(b)">Pamuk Sekeri</span> <span className="C(gray)">1 year ago</span></div>
-          <p className="Mb(10px) Whs(pw)">{text}</p>
-          <div className="C(gray)"><span className="Mend(10px)"><b>U</b> 2.1K</span> <span className="Mend(20px) Fw(b)">D</span> <span>Reply</span></div>
-          {/* <div className="Fw(b)">View 43 replies v</div> */}
-          <div className="Fw(b)">Hide replies ^</div>
-          <div className="Mt(10px)">
-            <ReplyListItem
-              authorName="Kailang"
-              date={new Date()}
-              text={text}
-              voteCount={0}
-            />
-            <ReplyListItem
-              authorName="Kailang"
-              date={new Date()}
-              text={text}
-              voteCount={12342}
-            />
-            <ReplyListItem
-              authorName="Kailang"
-              date={new Date()}
-              text={text}
-              voteCount={121435}
-            />
+        {/* comments */}
+        <hr className="Op(.3) Mb(20px)"/>
+        <div className="Fz(1.25em) Mb(20px)">2,458 Comments</div>
+        <div className="Mb(20px) Cf">
+          {/* left avatar */}
+          <div className="W(10%) Fl(start)">
+            <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src={avatarIconUrl} alt=""/>
+          </div>
+          {/* right content */}
+          <div className="W(90%) Fl(start) Pstart(20px)">
+            {/* textarea */}
+            <textarea className="W(100%)" placeholder="Add a public replay..." name="text" rows={this.state.textLineCount} value={this.state.text} onChange={this.onTextareaChange}/>
+            {/* buttons */}
+            <div className="Fl(end)">
+              <button className="Mend(5px)" onClick={this.onCancelClick}>Cancel</button>
+              <button>Comment</button>
+            </div>
           </div>
         </div>
+        <div>
+          <ArticleCommentListItem
+            authorName="Kailang"
+            date={new Date(new Date().getTime() - 500000000)}
+            text="asKj alksj dflkas dlfkaj skdf sdf"
+            voteCount={1234332}
+            replyCount={23}
+          />
+          <ArticleCommentListItem
+            authorName="Kailang"
+            date={new Date(new Date().getTime() - 50000000)}
+            text={text}
+            voteCount={1234332}
+            replyCount={23}
+          />
+        </div>
       </div>
-    </div>
-  </div>;
+    </div>;
+  }
 }
