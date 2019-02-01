@@ -8,6 +8,7 @@ import LoginPage from './LoginPage';
 
 import ArticleListPage from './ArticleListPage';
 import NewArticlePage from './NewArticlePage';
+import ArticlePage from './ArticlePage';
 
 import ErrorPage from './ErrorPage';
 
@@ -163,6 +164,7 @@ class App extends Component {
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
         <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
+        <PropsRoute path="/articles/:title" exact component={ArticlePage} />
 
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />

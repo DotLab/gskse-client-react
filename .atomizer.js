@@ -7,7 +7,8 @@ module.exports = {
         'xl': '@media(min-width:1200px)'
     },
     "custom": {
-        "$cardShadow": "0 1px 5px 0 rgba(0,0,0,.15)",
-        "$monoFonts": "SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+        "$cardShadow": "0 1px 8px 0 rgba(0,0,0,.15)",
+        "$monoFonts": 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+        "$normalFonts": '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
     },
 };

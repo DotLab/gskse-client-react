@@ -7,23 +7,26 @@
 .Bdbc\(gainsboro\) {
   border-bottom-color: gainsboro;
 }
-.Bdrs\(4px\) {
-  border-radius: 4px;
-}
 .Bdrs\(5px\) {
   border-radius: 5px;
 }
-.Bgc\(aliceblue\) {
-  background-color: aliceblue;
+.Bdrs\(4px\) {
+  border-radius: 4px;
 }
-.Bgc\(black\) {
-  background-color: black;
+.Bdrs\(100\%\) {
+  border-radius: 100%;
 }
 .Bgc\(white\) {
   background-color: white;
 }
 .Bgc\(azure\) {
   background-color: azure;
+}
+.Bgc\(black\) {
+  background-color: black;
+}
+.Bgc\(aliceblue\) {
+  background-color: aliceblue;
 }
 .Bgz\(ct\) {
   background-size: contain;
@@ -32,16 +35,16 @@
   background-position: center;
 }
 .Bxsh\(\$cardShadow\) {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,.15);
-}
-.C\(dimgray\) {
-  color: dimgray;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,.15);
 }
 .C\(darkgray\) {
   color: darkgray;
 }
 .C\(dodgerblue\) {
   color: dodgerblue;
+}
+.C\(dimgray\) {
+  color: dimgray;
 }
 .C\(white\) {
   color: white;
@@ -118,6 +121,9 @@
 .Fz\(1em\) {
   font-size: 1em;
 }
+.Fz\(3em\) {
+  font-size: 3em;
+}
 .Fz\(1\.5em\) {
   font-size: 1.5em;
 }
@@ -139,10 +145,6 @@
 .Lh\(2\) {
   line-height: 2;
 }
-.Mx\(2px\) {
-  margin-left: 2px;
-  margin-right: 2px;
-}
 .Mx\(5px\) {
   margin-left: 5px;
   margin-right: 5px;
@@ -159,6 +161,9 @@
 }
 .Mt\(6px\) {
   margin-top: 6px;
+}
+.Mt\(20px\) {
+  margin-top: 20px;
 }
 .Mend\(-10px\) {
   margin-right: -10px;
@@ -180,6 +185,9 @@
 }
 .Mb\(20px\) {
   margin-bottom: 20px;
+}
+.Mb\(40px\) {
+  margin-bottom: 40px;
 }
 .Mb\(4px\) {
   margin-bottom: 4px;
@@ -220,17 +228,20 @@
 .Start\(0\) {
   left: 0;
 }
+.Op\(\.3\) {
+  opacity: .3;
+}
 .Op\(\.4\) {
   opacity: .4;
 }
 .Op\(\.5\) {
   opacity: .5;
 }
-.Op\(\.2\) {
-  opacity: .2;
-}
 .Op\(0\) {
   opacity: 0;
+}
+.Op\(\.2\) {
+  opacity: .2;
 }
 .Ov\(h\) {
   overflow: hidden;
@@ -238,14 +249,14 @@
 .Ovy\(s\) {
   overflow-y: scroll;
 }
-.P\(10px\) {
-  padding: 10px;
-}
 .P\(35px\) {
   padding: 35px;
 }
 .P\(5px\) {
   padding: 5px;
+}
+.P\(10px\) {
+  padding: 10px;
 }
 .Py\(4px\) {
   padding-top: 4px;
@@ -259,6 +270,9 @@
 }
 .Pb\(5px\) {
   padding-bottom: 5px;
+}
+.Pstart\(20px\) {
+  padding-left: 20px;
 }
 .Pos\(a\), .StretchedBox {
   position: absolute;
@@ -290,6 +304,12 @@
 .Whs\(nw\) {
   white-space: nowrap;
 }
+.Whs\(pw\) {
+  white-space: pre-wrap;
+}
+.W\(10\%\) {
+  width: 10%;
+}
 .W\(100\%\) {
   width: 100%;
 }
@@ -314,8 +334,17 @@
 .W\(50\%\) {
   width: 50%;
 }
+.W\(600px\) {
+  width: 600px;
+}
 .W\(75\%\) {
   width: 75%;
+}
+.W\(800px\) {
+  width: 800px;
+}
+.W\(90\%\) {
+  width: 90%;
 }
 .W\(95\%\) {
   width: 95%;
