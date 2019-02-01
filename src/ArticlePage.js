@@ -99,8 +99,8 @@ export default function() {
           <div className="C(gray)"><span className="Mend(10px)">U 2.1K</span> <span className="Mend(20px)">D</span> <span>Reply</span></div>
           {/* <div className="Fw(b)">View 43 replies v</div> */}
           <div className="Fw(b)">Hide replies ^</div>
-          <div className="Mt(20px)">
-            <div className="Mb(20px) Cf">
+          <div className="Mt(10px)">
+            <div className="Mb(10px) Cf">
               <div className="W(10%) Fl(start)">
                 <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
               </div>
@@ -110,7 +110,7 @@ export default function() {
                 <div className="C(gray)"><span className="Mend(10px)">U 2.1K</span> <span className="Mend(20px)">D</span> <span>Reply</span></div>
               </div>
             </div>
-            <div className="Mb(20px) Cf">
+            <div className="Mb(10px) Cf">
               <div className="W(10%) Fl(start)">
                 <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
               </div>
