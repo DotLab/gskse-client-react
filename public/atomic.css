@@ -37,14 +37,14 @@
 .Bxsh\(\$cardShadow\) {
   box-shadow: 0 1px 8px 0 rgba(0,0,0,.15);
 }
+.C\(dodgerblue\) {
+  color: dodgerblue;
+}
 .C\(dimgray\) {
   color: dimgray;
 }
 .C\(darkgray\) {
   color: darkgray;
-}
-.C\(dodgerblue\) {
-  color: dodgerblue;
 }
 .C\(white\) {
   color: white;
@@ -60,6 +60,9 @@
 }
 .C\(limegreen\)\:h:hover {
   color: limegreen;
+}
+.C\(orange\)\:h:hover {
+  color: orange;
 }
 .C\(gainsboro\)\:h:hover {
   color: gainsboro;

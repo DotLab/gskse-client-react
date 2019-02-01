@@ -69,6 +69,7 @@ export default class ArticlePage extends React.Component {
 
     this.state = {text: '', textLineCount: 1};
   }
+
   render() {
     return <div className="Mt(20px)">
       <div className="W(600px) Mx(a)">
@@ -91,9 +92,9 @@ export default class ArticlePage extends React.Component {
         {/* views */}
         <hr className="Op(.3) Mb(20px)"/>
         <div className="Fl(end) C(gray) Lh(1.875em)">
-          <span className="Mend(20px)"><b>U</b> 13K</span>
-          <span className="Mend(20px)"><b>D</b> 74</span>
-          <span className="Mend(20px)"><b>L</b> 134K</span>
+          <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> 13K</span>
+          <span className="Cur(p) C(orange):h Mend(20px)"><b>D</b> 74</span>
+          <span className="Cur(p) C(red):h"><b>L</b> 134K</span>
         </div>
         <div className="Fz(1.25em) Mb(20px)">2,458 Views</div>
         {/* creator */}

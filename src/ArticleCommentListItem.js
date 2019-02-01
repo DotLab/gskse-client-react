@@ -32,7 +32,7 @@ export class ReplyListItem extends React.Component {
         {/* vote & reply */}
         <div className="C(gray)">
           <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {voteCount > 0 && <span>{formatNumberShort(voteCount, 1)}</span>}</span>
-          <span className="Cur(p) C(red):h Mend(30px) Fw(b)">D</span>
+          <span className="Cur(p) C(orange):h Mend(30px)"><b>D</b></span>
           <span className="Cur(p) C(black):h" onClick={this.onReplyClick}>Reply</span>
         </div>
         {/* reply box */}
@@ -65,6 +65,8 @@ export default class ArticleCommentListItem extends React.Component {
 
     this.onShowReplyClick = () => this.setState({doShowReplies: !this.state.doShowReplies});
 
+    this.onTextareaChange = onTextareaChange.bind(this);
+
     this.state = {isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
   }
 
@@ -87,7 +89,7 @@ export default class ArticleCommentListItem extends React.Component {
         {/* vote & reply */}
         <div className="C(gray)">
           <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {voteCount > 0 && <span>{formatNumberShort(voteCount, 1)}</span>}</span>
-          <span className="Cur(p) C(red):h Mend(30px) Fw(b)">D</span>
+          <span className="Cur(p) C(orange):h Mend(30px)"><b>D</b></span>
           <span className="Cur(p) C(black):h" onClick={this.onReplyClick}>Reply</span>
         </div>
         {/* reply box */}
