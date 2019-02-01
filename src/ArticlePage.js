@@ -5,11 +5,6 @@ import ArticleCommentListItem from './ArticleCommentListItem';
 
 import {avatarIconUrl, onTextareaChange, formatDate, formatNumber, formatNumberShort} from './utils';
 
-const text = `0:00 Flowering Night (Night of Nights ver.)
-2:32 Theme of Eastern Story (Title theme melody specifically)
-2:45 Native Faith
-3:05 Beloved Tomboyish Girl`;
-
 export default class ArticlePage extends React.Component {
   constructor(props) {
     super(props);
@@ -25,11 +20,9 @@ export default class ArticlePage extends React.Component {
   componentWillMount() {
     const title = this.props.match.params.title;
     this.props.getArticle({title}).then((article) => {
-      console.log(article);
       this.setState(article);
       return this.props.getComments({targetId: article.id});
     }).then((comments) => {
-      console.log(comments);
       this.setState({comments});
     });
   }
