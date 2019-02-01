@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import {ReplyListItem} from './ArticleCommentListItem';
+import ArticleCommentListItem, {ReplyListItem} from './ArticleCommentListItem';
 
 // const sample = `
 // Today, Apple opens its doors to 11 female-founded app development companies for the inaugural session of Entrepreneur Camp. The program is designed to provide female app creators with the tools needed to thrive in today’s global app economy. Since the App Store launched in 2008, developers have earned $120 billion, with more than a quarter of that in the past year alone.
@@ -107,6 +107,13 @@ export default function() {
           </div>
         </div>
       </div>
+      <ArticleCommentListItem
+        authorName="Kailang"
+        date={new Date(new Date().getTime() - 500000000)}
+        text="asKj alksj dflkas dlfkaj skdf sdf"
+        voteCount={1234332}
+        replyCount={23}
+      />
       <div className="Mb(20px) Cf">
         <div className="W(10%) Fl(start)">
           <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src="https://yt3.ggpht.com/-b5uuv9KAgzs/AAAAAAAAAAI/AAAAAAAAAAA/VEMh0OF5A9w/s48-c-k-no-mo-rj-c0xffffff/photo.jpg" alt=""/>
@@ -120,20 +127,20 @@ export default function() {
           <div className="Mt(10px)">
             <ReplyListItem
               authorName="Kailang"
-              text={text}
               date={new Date()}
+              text={text}
               voteCount={0}
             />
             <ReplyListItem
               authorName="Kailang"
-              text={text}
               date={new Date()}
+              text={text}
               voteCount={12342}
             />
             <ReplyListItem
               authorName="Kailang"
-              text={text}
               date={new Date()}
+              text={text}
               voteCount={121435}
             />
           </div>

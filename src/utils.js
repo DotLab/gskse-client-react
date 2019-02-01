@@ -1,4 +1,5 @@
 export function formatDate(date) {
+  if (date == null) return null;
   if (typeof date === 'string') {
     date = new Date(date);
   }
@@ -9,6 +10,7 @@ export function formatDate(date) {
 }
 
 export function formatNumber(number) {
+  if (number == null) return null;
   if (typeof number === 'string') {
     number = parseFloat(number);
   }
@@ -16,6 +18,7 @@ export function formatNumber(number) {
 }
 
 export function formatNumberShort(number, digitCount) {
+  if (number == null) return null;
   if (typeof number === 'string') {
     number = parseFloat(number);
   }
