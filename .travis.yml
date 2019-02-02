@@ -4,6 +4,7 @@ node_js:
 addons:
   ssh_known_hosts: 35.233.171.1
 script:
+  - npm run atomize
   - npm run build
   - ls -l build
   - openssl aes-256-cbc -K $encrypted_fd75b0287618_key -iv $encrypted_fd75b0287618_iv
