@@ -117,6 +117,11 @@ export default class ArticlePage extends React.Component {
           <div className="W(90%) Fl(start) Pstart(20px)">
             <div className="Fw(b)">{this.state.creatorName}</div>
             <div className="C(gray)">Published {formatDate(this.state.date)}</div>
+            {this.state.isOriginal ? <div>
+              Original Content
+            </div> : <div>
+              Reproduced from <a className="C(dodgerblue) Td(u):h" href={this.state.sourceUrl}>{this.state.sourceName}</a>
+            </div>}
           </div>
         </div>
         {/* comments */}
