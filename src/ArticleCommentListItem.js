@@ -11,12 +11,12 @@ export class ReplyListItem extends React.Component {
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
-    this.state = {isReplying: false, text: `@${this.props.authorName} `, textLineCount: 1};
+    this.state = {isReplying: false, text: `@${this.props.creatorName} `, textLineCount: 1};
   }
 
   onReplyClick() {
     if (!this.state.isReplying) {
-      this.setState({isReplying: !this.state.isReplying, text: `@${this.props.authorName} `, textLineCount: 1});
+      this.setState({isReplying: !this.state.isReplying, text: `@${this.props.creatorName} `, textLineCount: 1});
     } else {
       this.setState({isReplying: !this.state.isReplying});
     }
@@ -28,7 +28,7 @@ export class ReplyListItem extends React.Component {
   }
 
   render() {
-    const {authorName, date, text, voteCount} = this.props;
+    const {creatorName, date, text, voteCount} = this.props;
     return <div className="Mb(10px) Cf">
       {/* left avatar icon */}
       <div className="W(10%) Fl(start)">
@@ -38,7 +38,7 @@ export class ReplyListItem extends React.Component {
       <div className="W(90%) Fl(start) Pstart(20px)">
         {/* name & date */}
         <div className="Lh(1) Mb(5px)">
-          <span className="Fw(b) Mend(10px)">{authorName}</span>
+          <span className="Fw(b) Mend(10px)">{creatorName}</span>
           <span className="C(gray)">{formatDate(date)}</span>
         </div>
         {/* text */}
@@ -83,7 +83,7 @@ export default class ArticleCommentListItem extends React.Component {
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
-    this.state = {replyCount: props.replyCount, isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
+    this.state = {commentCount: props.commentCount, isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
   }
 
   onReplyClick() {
@@ -103,7 +103,7 @@ export default class ArticleCommentListItem extends React.Component {
     if (text) {
       this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({
         text: '', textLineCount: 1, isReplying: false,
-        replyCount: replies.length, replies, doShowReplies: true,
+        commentCount: replies.length, replies, doShowReplies: true,
       }));
     }
   }
@@ -111,12 +111,12 @@ export default class ArticleCommentListItem extends React.Component {
   onReplySendClick(text) {
     text = text.trim();
     if (text) {
-      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({replyCount: replies.length, replies, doShowReplies: true}));
+      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({commentCount: replies.length, replies, doShowReplies: true}));
     }
   }
 
   render() {
-    const {authorName, date, text, voteCount} = this.props;
+    const {creatorName, date, text, voteCount} = this.props;
     return <div className="Mb(20px) Cf">
       {/* left avatar icon */}
       <div className="W(10%) Fl(start)">
@@ -126,7 +126,7 @@ export default class ArticleCommentListItem extends React.Component {
       <div className="W(90%) Fl(start) Pstart(20px)">
         {/* name & date */}
         <div className="Lh(1) Mb(5px)">
-          <span className="Fw(b) Mend(10px)">{authorName}</span>
+          <span className="Fw(b) Mend(10px)">{creatorName}</span>
           <span className="C(gray)">{formatDate(date)}</span>
         </div>
         {/* text */}
@@ -155,11 +155,11 @@ export default class ArticleCommentListItem extends React.Component {
           </div>
         </div>}
         {/* view reply */}
-        {this.state.replyCount > 0 && <span className="Cur(p) Td(u):h Fw(b) My(5px)" onClick={this.onShowReplyClick}>
-          {this.state.doShowReplies ? 'Hide replies ^' : (this.state.replyCount === 1 ? 'View a reply' : `View ${formatNumber(this.state.replyCount)} replies v`)}
+        {this.state.commentCount > 0 && <span className="Cur(p) Td(u):h Fw(b) My(5px)" onClick={this.onShowReplyClick}>
+          {this.state.doShowReplies ? 'Hide replies ^' : (this.state.commentCount === 1 ? 'View a reply' : `View ${formatNumber(this.state.commentCount)} replies v`)}
         </span>}
         {/* reply list */}
-        {this.state.replyCount > 0 && this.state.doShowReplies && this.state.replies && <div className="Mt(10px)">
+        {this.state.commentCount > 0 && this.state.doShowReplies && this.state.replies && <div className="Mt(10px)">
           {this.state.replies.map((reply, i) => <ReplyListItem {...reply} key={i} onReplySendClick={this.onReplySendClick}/>)}
         </div>}
       </div>

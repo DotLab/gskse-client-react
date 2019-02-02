@@ -37,8 +37,8 @@
 .Bxsh\(\$cardShadow\) {
   box-shadow: 0 1px 8px 0 rgba(0,0,0,.15);
 }
-.C\(dodgerblue\) {
-  color: dodgerblue;
+.C\(white\) {
+  color: white;
 }
 .C\(dimgray\) {
   color: dimgray;
@@ -46,11 +46,11 @@
 .C\(darkgray\) {
   color: darkgray;
 }
-.C\(white\) {
-  color: white;
-}
 .C\(red\) {
   color: red;
+}
+.C\(orange\) {
+  color: orange;
 }
 .C\(gray\) {
   color: gray;
@@ -58,44 +58,50 @@
 .C\(green\) {
   color: green;
 }
-.C\(limegreen\)\:h:hover {
+.C\(limegreen\) {
   color: limegreen;
 }
-.C\(orange\)\:h:hover {
-  color: orange;
+.C\(dodgerblue\) {
+  color: dodgerblue;
+}
+.C\(limegreen\)\:h:hover {
+  color: limegreen;
 }
 .C\(gainsboro\)\:h:hover {
   color: gainsboro;
 }
-.C\(red\)\:h:hover {
-  color: red;
+.C\(orange\)\:h:hover {
+  color: orange;
 }
 .C\(dodgerblue\)\:h:hover {
   color: dodgerblue;
 }
-.C\(black\)\:h:hover {
-  color: black;
+.C\(red\)\:h:hover {
+  color: red;
 }
 .C\(deepskyblue\)\:h:hover {
   color: deepskyblue;
 }
+.C\(black\)\:h:hover {
+  color: black;
+}
 .HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
   color: dodgerblue;
-}
-.Cur\(a\) {
-  cursor: auto;
 }
 .Cur\(p\) {
   cursor: pointer;
 }
-.D\(b\) {
-  display: block;
+.Cur\(a\) {
+  cursor: auto;
+}
+.D\(ib\) {
+  display: inline-block;
 }
 .D\(n\) {
   display: none;
 }
-.D\(ib\) {
-  display: inline-block;
+.D\(b\) {
+  display: block;
 }
 .Blur\(30px\) {
   filter: blur(30px);
@@ -121,11 +127,11 @@
 .Fz\(\.9em\) {
   font-size: .9em;
 }
-.Fz\(1\.25em\) {
-  font-size: 1.25em;
-}
 .Fz\(\.75em\) {
   font-size: .75em;
+}
+.Fz\(1\.5em\) {
+  font-size: 1.5em;
 }
 .Fz\(1em\) {
   font-size: 1em;
@@ -133,8 +139,8 @@
 .Fz\(3em\) {
   font-size: 3em;
 }
-.Fz\(1\.5em\) {
-  font-size: 1.5em;
+.Fz\(1\.25em\) {
+  font-size: 1.25em;
 }
 .H\(100\%\) {
   height: 100%;
@@ -230,14 +236,14 @@
 .T\(6px\) {
   top: 6px;
 }
-.End\(100\%\) {
-  right: 100%;
+.End\(40px\) {
+  right: 40px;
 }
 .End\(0\) {
   right: 0;
 }
-.End\(40px\) {
-  right: 40px;
+.End\(100\%\) {
+  right: 100%;
 }
 .B\(10px\) {
   bottom: 10px;

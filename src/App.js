@@ -40,6 +40,9 @@ class App extends Component {
     this.getArticle = this.getArticle.bind(this);
     this.getComments = this.getComments.bind(this);
     this.postComment = this.postComment.bind(this);
+    this.flagUpVote = this.flagUpVote.bind(this);
+    this.flagDownVote = this.flagDownVote.bind(this);
+    this.flagLove = this.flagLove.bind(this);
 
     this.state = {
       connected: false,
@@ -65,11 +68,14 @@ class App extends Component {
   }
 
   login({nameOrEmail, password, redirect}) {
-    this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
-      if (res.err) return this.error(res.err);
-      const {id, name} = res.data;
-      this.setState({user: {id, name}});
-      if (redirect) this.history.push(redirect);
+    return new Promise((resolve) => {
+      this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
+        if (res.err) return this.error(res.err);
+        const {id, name} = res.data;
+        this.setState({user: {id, name}});
+        if (redirect) this.history.push(redirect);
+        resolve();
+      });
     });
   }
 
@@ -89,7 +95,7 @@ class App extends Component {
   }
 
   getArticles() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.socket.emit('cl_get_articles', {}, (res) => {
         if (res.err) return this.error(res.err);
         resolve(res.data);
@@ -118,6 +124,33 @@ class App extends Component {
   postComment({targetId, text}) {
     return new Promise((resolve)=> {
       this.socket.emit('cl_post_comment', {targetId, text}, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
+  flagUpVote({targetId}) {
+    return new Promise((resolve)=> {
+      this.socket.emit('cl_flag', {targetId, intent: 'UpVote'}, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
+  flagDownVote({targetId}) {
+    return new Promise((resolve)=> {
+      this.socket.emit('cl_flag', {targetId, intent: 'DownVote'}, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
+  flagLove({targetId}) {
+    return new Promise((resolve)=> {
+      this.socket.emit('cl_flag', {targetId, intent: 'Love'}, (res) => {
         if (res.err) return this.error(res.err);
         resolve(res.data);
       });
@@ -198,7 +231,16 @@ class App extends Component {
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
         <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
-        <PropsRoute path="/articles/:title" exact component={ArticlePage} getArticle={this.getArticle} getComments={this.getComments} postComment={this.postComment}/>
+        <PropsRoute
+          path="/articles/:title" exact
+          component={ArticlePage}
+          getArticle={this.getArticle}
+          getComments={this.getComments}
+          postComment={this.postComment}
+          flagDownVote={this.flagDownVote}
+          flagUpVote={this.flagUpVote}
+          flagLove={this.flagLove}
+        />
 
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
         <Route />

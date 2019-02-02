@@ -11,10 +11,18 @@ export default class ArticlePage extends React.Component {
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
-    this.onCancelClick = () => this.setState({text: '', textLineCount: 1});
+    this.onCancelClick = this.onCancelClick.bind(this);
     this.onSendClick = this.onSendClick.bind(this);
 
+    this.onUpVoteClick = this.onUpVoteClick.bind(this);
+    this.onDownVoteClick = this.onDownVoteClick.bind(this);
+    this.onLoveClick = this.onLoveClick.bind(this);
+
     this.state = {text: '', textLineCount: 1};
+  }
+
+  onCancelClick() {
+    this.setState({text: '', textLineCount: 1});
   }
 
   componentWillMount() {
@@ -37,6 +45,37 @@ export default class ArticlePage extends React.Component {
     }
   }
 
+  onUpVoteClick() {
+    this.props.flagUpVote({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didUpVote: adjustment.didUpVote,
+        didDownVote: adjustment.didDownVote,
+        upVoteCount: this.state.upVoteCount + adjustment.upVoteCount,
+        downVoteCount: this.state.downVoteCount + adjustment.downVoteCount,
+      });
+    });
+  }
+
+  onDownVoteClick() {
+    this.props.flagDownVote({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didUpVote: adjustment.didUpVote,
+        didDownVote: adjustment.didDownVote,
+        upVoteCount: this.state.upVoteCount + adjustment.upVoteCount,
+        downVoteCount: this.state.downVoteCount + adjustment.downVoteCount,
+      });
+    });
+  }
+
+  onLoveClick() {
+    this.props.flagLove({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didLove: adjustment.didLove,
+        loveCount: this.state.loveCount + adjustment.loveCount,
+      });
+    });
+  }
+
   render() {
     return <div className="Mt(20px)">
       <div className="W(600px) Mx(a)">
@@ -45,10 +84,11 @@ export default class ArticlePage extends React.Component {
           <div className="C(gray)">{formatDate(this.state.date)}</div>
         </div>
         <h2 className="Fz(3em) Lh(1.15) Mb(50px)">{this.state.title}</h2>
-        <div className="C(gray) Mb(40px) Fw(1.5em)">
-          <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
-          <span className="Cur(p) C(orange):h Mend(20px)"><b>D</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>
-          <span className="Cur(p) C(red):h"><b>L</b> {formatNumberShort(this.state.loveCount || 0)}</span>
+        <div className="C(gray) Mb(40px) Fw(2em)">
+          <span className="Mend(20px)"><b>Ve</b> {formatNumberShort(this.state.viewCount || 0)}</span>
+          <span className={'Cur(p) C(limegreen):h Mend(20px) ' + (this.state.didUpVote ? 'C(limegreen)' : '')} onClick={this.onUpVoteClick}><b>Up</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
+          <span className={'Cur(p) C(orange):h Mend(20px) ' + (this.state.didDownVote ? 'C(orange)' : '')} onClick={this.onDownVoteClick}><b>Do</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>
+          <span className={'Cur(p) C(red):h ' + (this.state.didLove ? 'C(red)' : '')} onClick={this.onLoveClick}><b>Lo</b> {formatNumberShort(this.state.loveCount || 0)}</span>
         </div>
         <hr className="Op(.3) Mb(40px)"/>
         <div className="Mb(40px) Fz(1.5em)">{this.state.excerpt}</div>
@@ -64,9 +104,9 @@ export default class ArticlePage extends React.Component {
         {/* views */}
         <hr className="Op(.3) Mb(20px)"/>
         <div className="Fl(end) C(gray) Lh(1.875em)">
-          <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
-          <span className="Cur(p) C(orange):h Mend(20px)"><b>D</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>
-          <span className="Cur(p) C(red):h"><b>L</b> {formatNumberShort(this.state.loveCount || 0)}</span>
+          <span className={'Cur(p) C(limegreen):h Mend(20px) ' + (this.state.didUpVote ? 'C(limegreen)' : '')} onClick={this.onUpVoteClick}><b>Up</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
+          <span className={'Cur(p) C(orange):h Mend(20px) ' + (this.state.didDownVote ? 'C(orange)' : '')} onClick={this.onDownVoteClick}><b>Do</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>
+          <span className={'Cur(p) C(red):h ' + (this.state.didLove ? 'C(red)' : '')} onClick={this.onLoveClick}><b>Lo</b> {formatNumberShort(this.state.loveCount || 0)}</span>
         </div>
         <div className="Fz(1.25em) Mb(20px)">{formatNumber(this.state.viewCount || 0)} Views</div>
         {/* creator */}
