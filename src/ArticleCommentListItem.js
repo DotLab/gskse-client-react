@@ -26,12 +26,12 @@ export class ReplyListItem extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.sendReply(this.state.text);
     this.setState({text: '', textLineCount: 1, isReplying: false});
+    this.props.sendReply(this.state.text);
   }
 
   onUpVoteClick() {
-    this.props.flagUpVote({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: 'UpVote', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -41,7 +41,7 @@ export class ReplyListItem extends React.Component {
   }
 
   onDownVoteClick() {
-    this.props.flagDownVote({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: 'DownVote', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -127,7 +127,7 @@ export default class ArticleCommentListItem extends React.Component {
     e.preventDefault();
     const text = this.state.text.trim();
     if (text) {
-      this.props.postComment({targetId: this.state.id, text}).then((replies) => this.setState({
+      this.props.postComment({collection: 'Comment', targetId: this.state.id, text}).then((replies) => this.setState({
         text: '', textLineCount: 1, isReplying: false,
         commentCount: replies.length, replies, doShowReplies: true,
       }));
@@ -137,12 +137,12 @@ export default class ArticleCommentListItem extends React.Component {
   sendReply(text) {
     text = text.trim();
     if (text) {
-      this.props.postComment({targetId: this.state.id, text}).then((replies) => this.setState({commentCount: replies.length, replies, doShowReplies: true}));
+      this.props.postComment({collection: 'Comment', targetId: this.state.id, text}).then((replies) => this.setState({commentCount: replies.length, replies, doShowReplies: true}));
     }
   }
 
   onUpVoteClick() {
-    this.props.flagUpVote({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: 'UpVote', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -152,7 +152,7 @@ export default class ArticleCommentListItem extends React.Component {
   }
 
   onDownVoteClick() {
-    this.props.flagDownVote({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: 'DownVote', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -210,8 +210,7 @@ export default class ArticleCommentListItem extends React.Component {
             comment={reply}
             key={i}
             sendReply={this.sendReply}
-            flagUpVote={this.props.flagUpVote}
-            flagDownVote={this.props.flagDownVote}
+            postFlag={this.props.postFlag}
           />)}
         </div>}
       </div>

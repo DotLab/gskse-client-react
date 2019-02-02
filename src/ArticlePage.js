@@ -39,7 +39,7 @@ export default class ArticlePage extends React.Component {
     e.preventDefault();
     const text = this.state.text.trim();
     if (text) {
-      this.props.postComment({targetId: this.state.id, text}).then((comments) => this.setState({
+      this.props.postComment({collection: 'Article', targetId: this.state.id, text}).then((comments) => this.setState({
         text: '', textLineCount: 1,
         commentCount: comments.length, comments,
       }));
@@ -47,7 +47,7 @@ export default class ArticlePage extends React.Component {
   }
 
   onUpVoteClick() {
-    this.props.flagUpVote({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Article', intent: 'UpVote', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -58,7 +58,7 @@ export default class ArticlePage extends React.Component {
   }
 
   onDownVoteClick() {
-    this.props.flagDownVote({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Article', intent: 'DownVote', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -69,7 +69,7 @@ export default class ArticlePage extends React.Component {
   }
 
   onLoveClick() {
-    this.props.flagLove({targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Article', intent: 'Love', targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didLove: adjustment.didLove,
         loveCount: this.state.loveCount + adjustment.loveCount,
@@ -150,8 +150,7 @@ export default class ArticlePage extends React.Component {
             key={i}
             getComments={this.props.getComments}
             postComment={this.props.postComment}
-            flagUpVote={this.props.flagUpVote}
-            flagDownVote={this.props.flagDownVote}
+            postFlag={this.props.postFlag}
           />)}
         </div>}
       </div>

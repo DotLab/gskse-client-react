@@ -40,9 +40,7 @@ class App extends Component {
     this.getArticle = this.getArticle.bind(this);
     this.getComments = this.getComments.bind(this);
     this.postComment = this.postComment.bind(this);
-    this.flagUpVote = this.flagUpVote.bind(this);
-    this.flagDownVote = this.flagDownVote.bind(this);
-    this.flagLove = this.flagLove.bind(this);
+    this.postFlag = this.postFlag.bind(this);
 
     this.state = {
       connected: false,
@@ -123,36 +121,18 @@ class App extends Component {
     });
   }
 
-  postComment({targetId, text}) {
+  postComment({collection, targetId, text}) {
     return new Promise((resolve)=> {
-      this.socket.emit('cl_post_comment', {targetId, text}, (res) => {
+      this.socket.emit('cl_post_comment', {collection, targetId, text}, (res) => {
         if (res.err) return this.error(res.err);
         resolve(res.data);
       });
     });
   }
 
-  flagUpVote({targetId}) {
+  postFlag({collection, targetId, intent}) {
     return new Promise((resolve)=> {
-      this.socket.emit('cl_flag', {targetId, intent: 'UpVote'}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
-    });
-  }
-
-  flagDownVote({targetId}) {
-    return new Promise((resolve)=> {
-      this.socket.emit('cl_flag', {targetId, intent: 'DownVote'}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
-    });
-  }
-
-  flagLove({targetId}) {
-    return new Promise((resolve)=> {
-      this.socket.emit('cl_flag', {targetId, intent: 'Love'}, (res) => {
+      this.socket.emit('cl_flag', {collection, targetId, intent}, (res) => {
         if (res.err) return this.error(res.err);
         resolve(res.data);
       });
@@ -239,9 +219,7 @@ class App extends Component {
           getArticle={this.getArticle}
           getComments={this.getComments}
           postComment={this.postComment}
-          flagDownVote={this.flagDownVote}
-          flagUpVote={this.flagUpVote}
-          flagLove={this.flagLove}
+          postFlag={this.postFlag}
         />
 
         <PropsRoute path="/error" exact component={ErrorPage} error={this.state.error} />
