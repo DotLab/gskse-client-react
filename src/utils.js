@@ -41,6 +41,11 @@ export function onChange(e) {
   this.setState({[e.target.name]: e.target.value});
 }
 
+export function onCheckboxChange(e) {
+  /* eslint-disable-next-line no-invalid-this */
+  this.setState({[e.target.name]: e.target.checked});
+}
+
 export function onTextareaChange(e) {
   /* eslint-disable-next-line no-invalid-this */
   this.setState({[e.target.name]: e.target.value});

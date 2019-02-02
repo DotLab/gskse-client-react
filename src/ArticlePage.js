@@ -93,16 +93,16 @@ export default class ArticlePage extends React.Component {
         <hr className="Op(.3) Mb(40px)"/>
         <div className="Mb(40px) Fz(1.5em)">{this.state.excerpt}</div>
       </div>
-
-      <img className="W(800px) D(b) Mx(a) Bxsh($cardShadow) Bdrs(5px) Mb(40px)" src={this.state.coverUrl} alt=""/>
-
-      <div className="article W(600px) Mx(a)">
+      {/* cover */}
+      {this.state.coverUrl && <img className="W(800px) D(b) Mx(a) Bxsh($cardShadow) Bdrs(5px) Mb(40px)" src={this.state.coverUrl} alt=""/>}
+      {/* markdown */}
+      <div className="article Maw(600px) Mx(a)">
         <ReactMarkdown source={this.state.markdown}/>
       </div>
 
       <div className="W(800px) Mx(a)">
-        {/* views */}
         <hr className="Op(.3) Mb(20px)"/>
+        {/* views */}
         <div className="Fl(end) C(gray) Lh(1.875em)">
           <span className={'Cur(p) C(limegreen):h Mend(20px) ' + (this.state.didUpVote ? 'C(limegreen)' : '')} onClick={this.onUpVoteClick}><b>Up</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
           <span className={'Cur(p) C(orange):h Mend(20px) ' + (this.state.didDownVote ? 'C(orange)' : '')} onClick={this.onDownVoteClick}><b>Do</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>

@@ -97,9 +97,6 @@
 .D\(ib\) {
   display: inline-block;
 }
-.D\(n\) {
-  display: none;
-}
 .D\(b\) {
   display: block;
 }
@@ -127,11 +124,11 @@
 .Fz\(\.9em\) {
   font-size: .9em;
 }
+.Fz\(1\.25em\) {
+  font-size: 1.25em;
+}
 .Fz\(\.75em\) {
   font-size: .75em;
-}
-.Fz\(1\.5em\) {
-  font-size: 1.5em;
 }
 .Fz\(1em\) {
   font-size: 1em;
@@ -139,8 +136,8 @@
 .Fz\(3em\) {
   font-size: 3em;
 }
-.Fz\(1\.25em\) {
-  font-size: 1.25em;
+.Fz\(1\.5em\) {
+  font-size: 1.5em;
 }
 .H\(100\%\) {
   height: 100%;
@@ -154,14 +151,14 @@
 .Lh\(1\.15\) {
   line-height: 1.15;
 }
-.Lh\(1\.5\) {
-  line-height: 1.5;
-}
 .Lh\(1\.875em\) {
   line-height: 1.875em;
 }
 .Lh\(2\) {
   line-height: 2;
+}
+.Lh\(1\.5\) {
+  line-height: 1.5;
 }
 .Mx\(5px\) {
   margin-left: 5px;
@@ -173,17 +170,14 @@
   margin-left: auto;
   margin-right: auto;
 }
-.My\(10px\), .Mt\(10px\) {
-  margin-top: 10px;
-}
-.My\(10px\), .Mb\(10px\) {
-  margin-bottom: 10px;
-}
 .My\(5px\) {
   margin-top: 5px;
 }
 .My\(5px\), .Mb\(5px\) {
   margin-bottom: 5px;
+}
+.Mt\(10px\) {
+  margin-top: 10px;
 }
 .Mt\(6px\) {
   margin-top: 6px;
@@ -209,6 +203,9 @@
 .Mb\(0\) {
   margin-bottom: 0;
 }
+.Mb\(10px\) {
+  margin-bottom: 10px;
+}
 .Mb\(20px\) {
   margin-bottom: 20px;
 }
@@ -226,6 +223,9 @@
 }
 .Maw\(1280px\) {
   max-width: 1280px;
+}
+.Maw\(600px\) {
+  max-width: 600px;
 }
 .T\(0\) {
   top: 0;
