@@ -12,7 +12,7 @@ export default class ArticlePage extends React.Component {
     this.onTextareaChange = onTextareaChange.bind(this);
 
     this.onCancelClick = this.onCancelClick.bind(this);
-    this.onSendClick = this.onSendClick.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
     this.onUpVoteClick = this.onUpVoteClick.bind(this);
     this.onDownVoteClick = this.onDownVoteClick.bind(this);
@@ -35,7 +35,8 @@ export default class ArticlePage extends React.Component {
     });
   }
 
-  onSendClick() {
+  onSubmit(e) {
+    e.preventDefault();
     const text = this.state.text.trim();
     if (text) {
       this.props.postComment({targetId: this.state.id, text}).then((comments) => this.setState({
@@ -133,15 +134,15 @@ export default class ArticlePage extends React.Component {
             <img className="W(100%) Bxsh($cardShadow) Bdrs(100%)" src={avatarIconUrl} alt=""/>
           </div>
           {/* right content */}
-          <div className="W(90%) Fl(start) Pstart(20px)">
+          <form className="W(90%) Fl(start) Pstart(20px)" onSubmit={this.onSubmit}>
             {/* textarea */}
-            <textarea className="W(100%)" placeholder="Add a public replay..." name="text" rows={this.state.textLineCount} value={this.state.text} onChange={this.onTextareaChange}/>
+            <textarea className="W(100%)" placeholder="Add a public replay..." required name="text" rows={this.state.textLineCount} value={this.state.text} onChange={this.onTextareaChange}/>
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onCancelClick}>Cancel</button>
-              <button onClick={this.onSendClick}>Comment</button>
+              <button type="submit">Comment</button>
             </div>
-          </div>
+          </form>
         </div>
         {this.state.comments && <div>
           {this.state.comments.map((comment, i) => <ArticleCommentListItem
