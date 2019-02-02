@@ -51,7 +51,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.login({nameOrEmail: 'Kailang', password: '123'});
+    if (process.env.NODE_ENV === 'development') {
+      this.login({nameOrEmail: 'Kailang', password: '123'});
+    }
   }
 
   error(err) {

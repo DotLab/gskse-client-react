@@ -85,7 +85,7 @@ export default class ArticlePage extends React.Component {
         </div>
         <h2 className="Fz(3em) Lh(1.15) Mb(50px)">{this.state.title}</h2>
         <div className="C(gray) Mb(40px) Fw(2em)">
-          <span className="Mend(20px)"><b>Ve</b> {formatNumberShort(this.state.viewCount || 0)}</span>
+          <span className="Mend(20px)"><b>Vi</b> {formatNumberShort(this.state.viewCount || 0)}</span>
           <span className={'Cur(p) C(limegreen):h Mend(20px) ' + (this.state.didUpVote ? 'C(limegreen)' : '')} onClick={this.onUpVoteClick}><b>Up</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
           <span className={'Cur(p) C(orange):h Mend(20px) ' + (this.state.didDownVote ? 'C(orange)' : '')} onClick={this.onDownVoteClick}><b>Do</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>
           <span className={'Cur(p) C(red):h ' + (this.state.didLove ? 'C(red)' : '')} onClick={this.onLoveClick}><b>Lo</b> {formatNumberShort(this.state.loveCount || 0)}</span>
@@ -139,7 +139,14 @@ export default class ArticlePage extends React.Component {
           </div>
         </div>
         {this.state.comments && <div>
-          {this.state.comments.map((comment, i) => <ArticleCommentListItem {...comment} key={i} getComments={this.props.getComments} postComment={this.props.postComment}/>)}
+          {this.state.comments.map((comment, i) => <ArticleCommentListItem
+            comment={comment}
+            key={i}
+            getComments={this.props.getComments}
+            postComment={this.props.postComment}
+            flagUpVote={this.props.flagUpVote}
+            flagDownVote={this.props.flagDownVote}
+          />)}
         </div>}
       </div>
     </div>;

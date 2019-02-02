@@ -16,7 +16,7 @@ export default class LoginPage extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login({...this.state, redirect: '/'});
   }
 
   render() {

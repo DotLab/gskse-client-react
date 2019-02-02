@@ -8,27 +8,49 @@ export class ReplyListItem extends React.Component {
 
     this.onReplyClick = this.onReplyClick.bind(this);
     this.onSendClick = this.onSendClick.bind(this);
+    this.onUpVoteClick = this.onUpVoteClick.bind(this);
+    this.onDownVoteClick = this.onDownVoteClick.bind(this);
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
-    this.state = {isReplying: false, text: `@${this.props.creatorName} `, textLineCount: 1};
+    this.state = {...props.comment, commentText: props.comment.text, isReplying: false, text: `@${this.props.comment.creatorName} `, textLineCount: 1};
   }
 
   onReplyClick() {
     if (!this.state.isReplying) {
-      this.setState({isReplying: !this.state.isReplying, text: `@${this.props.creatorName} `, textLineCount: 1});
+      this.setState({isReplying: !this.state.isReplying, text: `@${this.props.comment.creatorName} `, textLineCount: 1});
     } else {
       this.setState({isReplying: !this.state.isReplying});
     }
   }
 
   onSendClick() {
-    this.props.onReplySendClick(this.state.text);
+    this.props.sendReply(this.state.text);
     this.setState({text: '', textLineCount: 1, isReplying: false});
   }
 
+  onUpVoteClick() {
+    this.props.flagUpVote({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didUpVote: adjustment.didUpVote,
+        didDownVote: adjustment.didDownVote,
+        voteCount: this.state.voteCount + adjustment.voteCount,
+      });
+    });
+  }
+
+  onDownVoteClick() {
+    this.props.flagDownVote({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didUpVote: adjustment.didUpVote,
+        didDownVote: adjustment.didDownVote,
+        voteCount: this.state.voteCount + adjustment.voteCount,
+      });
+    });
+  }
+
   render() {
-    const {creatorName, date, text, voteCount} = this.props;
+    const {creatorName, date, commentText, voteCount} = this.state;
     return <div className="Mb(10px) Cf">
       {/* left avatar icon */}
       <div className="W(10%) Fl(start)">
@@ -42,11 +64,11 @@ export class ReplyListItem extends React.Component {
           <span className="C(gray)">{formatDate(date)}</span>
         </div>
         {/* text */}
-        <p className="Mb(5px) Whs(pw)">{text}</p>
+        <p className="Mb(5px) Whs(pw)">{commentText}</p>
         {/* vote & reply */}
         <div className="C(gray)">
-          <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {voteCount > 0 && <span>{formatNumberShort(voteCount, 1)}</span>}</span>
-          <span className="Cur(p) C(orange):h Mend(30px)"><b>D</b></span>
+          <span className={'Cur(p) C(limegreen):h Mend(20px) ' + (this.state.didUpVote ? 'C(limegreen)' : '')} onClick={this.onUpVoteClick}><b>U</b> {voteCount > 0 && <span>{formatNumberShort(voteCount, 1)}</span>}</span>
+          <span className={'Cur(p) C(orange):h Mend(20px) ' + (this.state.didDownVote ? 'C(orange)' : '')} onClick={this.onDownVoteClick}><b>D</b></span>
           <span className="Cur(p) C(black):h" onClick={this.onReplyClick}>Reply</span>
         </div>
         {/* reply box */}
@@ -79,11 +101,13 @@ export default class ArticleCommentListItem extends React.Component {
 
     this.onShowReplyClick = this.onShowReplyClick.bind(this);
     this.onSendClick = this.onSendClick.bind(this);
-    this.onReplySendClick = this.onReplySendClick.bind(this);
+    this.sendReply = this.sendReply.bind(this);
+    this.onUpVoteClick = this.onUpVoteClick.bind(this);
+    this.onDownVoteClick = this.onDownVoteClick.bind(this);
 
     this.onTextareaChange = onTextareaChange.bind(this);
 
-    this.state = {commentCount: props.commentCount, isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
+    this.state = {...props.comment, commentText: props.comment.text, isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
   }
 
   onReplyClick() {
@@ -92,7 +116,7 @@ export default class ArticleCommentListItem extends React.Component {
 
   onShowReplyClick() {
     if (!this.state.replies) {
-      this.props.getComments({targetId: this.props.id}).then((replies) => this.setState({replies, doShowReplies: !this.state.doShowReplies}));
+      this.props.getComments({targetId: this.state.id}).then((replies) => this.setState({replies, doShowReplies: !this.state.doShowReplies}));
     } else {
       this.setState({doShowReplies: !this.state.doShowReplies});
     }
@@ -101,22 +125,42 @@ export default class ArticleCommentListItem extends React.Component {
   onSendClick() {
     const text = this.state.text.trim();
     if (text) {
-      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({
+      this.props.postComment({targetId: this.state.id, text}).then((replies) => this.setState({
         text: '', textLineCount: 1, isReplying: false,
         commentCount: replies.length, replies, doShowReplies: true,
       }));
     }
   }
 
-  onReplySendClick(text) {
+  sendReply(text) {
     text = text.trim();
     if (text) {
-      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({commentCount: replies.length, replies, doShowReplies: true}));
+      this.props.postComment({targetId: this.state.id, text}).then((replies) => this.setState({commentCount: replies.length, replies, doShowReplies: true}));
     }
   }
 
+  onUpVoteClick() {
+    this.props.flagUpVote({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didUpVote: adjustment.didUpVote,
+        didDownVote: adjustment.didDownVote,
+        voteCount: this.state.voteCount + adjustment.voteCount,
+      });
+    });
+  }
+
+  onDownVoteClick() {
+    this.props.flagDownVote({targetId: this.state.id}).then((adjustment) => {
+      this.setState({
+        didUpVote: adjustment.didUpVote,
+        didDownVote: adjustment.didDownVote,
+        voteCount: this.state.voteCount + adjustment.voteCount,
+      });
+    });
+  }
+
   render() {
-    const {creatorName, date, text, voteCount} = this.props;
+    const {creatorName, date, commentText, voteCount} = this.state;
     return <div className="Mb(20px) Cf">
       {/* left avatar icon */}
       <div className="W(10%) Fl(start)">
@@ -130,11 +174,11 @@ export default class ArticleCommentListItem extends React.Component {
           <span className="C(gray)">{formatDate(date)}</span>
         </div>
         {/* text */}
-        <p className="Mb(5px) Whs(pw)">{text}</p>
+        <p className="Mb(5px) Whs(pw)">{commentText}</p>
         {/* vote & reply */}
         <div className="C(gray)">
-          <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {voteCount > 0 && <span>{formatNumberShort(voteCount, 1)}</span>}</span>
-          <span className="Cur(p) C(orange):h Mend(30px)"><b>D</b></span>
+          <span className={'Cur(p) C(limegreen):h Mend(20px) ' + (this.state.didUpVote ? 'C(limegreen)' : '')} onClick={this.onUpVoteClick}><b>U</b> {voteCount > 0 && <span>{formatNumberShort(voteCount, 1)}</span>}</span>
+          <span className={'Cur(p) C(orange):h Mend(20px) ' + (this.state.didDownVote ? 'C(orange)' : '')} onClick={this.onDownVoteClick}><b>D</b></span>
           <span className="Cur(p) C(black):h" onClick={this.onReplyClick}>Reply</span>
         </div>
         {/* reply box */}
@@ -146,7 +190,7 @@ export default class ArticleCommentListItem extends React.Component {
           {/* right content */}
           <div className="W(90%) Fl(start) Pstart(20px)">
             {/* textarea */}
-            <textarea className="W(100%)" placeholder="Add a public comment..." name="text" rows={this.state.textLineCount} defaultValue={this.state.text} onChange={this.onTextareaChange}/>
+            <textarea className="W(100%)" placeholder="Add a public comment..." name="text" rows={this.state.textLineCount} value={this.state.text} onChange={this.onTextareaChange}/>
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onReplyClick}>Cancel</button>
@@ -160,7 +204,13 @@ export default class ArticleCommentListItem extends React.Component {
         </span>}
         {/* reply list */}
         {this.state.commentCount > 0 && this.state.doShowReplies && this.state.replies && <div className="Mt(10px)">
-          {this.state.replies.map((reply, i) => <ReplyListItem {...reply} key={i} onReplySendClick={this.onReplySendClick}/>)}
+          {this.state.replies.map((reply, i) => <ReplyListItem
+            comment={reply}
+            key={i}
+            sendReply={this.sendReply}
+            flagUpVote={this.props.flagUpVote}
+            flagDownVote={this.props.flagDownVote}
+          />)}
         </div>}
       </div>
     </div>;
