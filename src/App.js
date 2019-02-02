@@ -88,9 +88,9 @@ class App extends Component {
     });
   }
 
-  getArticles({creatorId}) {
+  getArticles() {
     return new Promise((resolve, reject) => {
-      this.socket.emit('cl_get_articles', {creatorId}, (res) => {
+      this.socket.emit('cl_get_articles', {}, (res) => {
         if (res.err) return this.error(res.err);
         resolve(res.data);
       });
@@ -110,18 +110,15 @@ class App extends Component {
     return new Promise((resolve) => {
       this.socket.emit('cl_get_comments', {targetId}, (res) => {
         if (res.err) return this.error(res.err);
-        console.log(res.data);
         resolve(res.data);
       });
     });
   }
 
   postComment({targetId, text}) {
-    console.log(targetId);
     return new Promise((resolve)=> {
       this.socket.emit('cl_post_comment', {targetId, text}, (res) => {
         if (res.err) return this.error(res.err);
-        console.log(res.data);
         resolve(res.data);
       });
     });

@@ -30,7 +30,10 @@ export default class ArticlePage extends React.Component {
   onSendClick() {
     const text = this.state.text.trim();
     if (text) {
-      this.props.postComment({targetId: this.state.id, text}).then((comments) => this.setState({commentCount: comments.length, comments}));
+      this.props.postComment({targetId: this.state.id, text}).then((comments) => this.setState({
+        text: '', textLineCount: 1,
+        commentCount: comments.length, comments,
+      }));
     }
   }
 
@@ -38,10 +41,15 @@ export default class ArticlePage extends React.Component {
     return <div className="Mt(20px)">
       <div className="W(600px) Mx(a)">
         <div className="Lh(1.15) Mb(40px)">
-          <div className="C(dodgerblue)">Update</div>
+          <div className="C(dodgerblue) Fw(b)">Update</div>
           <div className="C(gray)">{formatDate(this.state.date)}</div>
         </div>
-        <h2 className="Fz(3em) Lh(1.15) Mb(40px)">{this.state.title}</h2>
+        <h2 className="Fz(3em) Lh(1.15) Mb(50px)">{this.state.title}</h2>
+        <div className="C(gray) Mb(40px) Fw(1.5em)">
+          <span className="Cur(p) C(limegreen):h Mend(20px)"><b>U</b> {formatNumberShort(this.state.upVoteCount || 0)}</span>
+          <span className="Cur(p) C(orange):h Mend(20px)"><b>D</b> {formatNumberShort(this.state.downVoteCount || 0)}</span>
+          <span className="Cur(p) C(red):h"><b>L</b> {formatNumberShort(this.state.loveCount || 0)}</span>
+        </div>
         <hr className="Op(.3) Mb(40px)"/>
         <div className="Mb(40px) Fz(1.5em)">{this.state.excerpt}</div>
       </div>

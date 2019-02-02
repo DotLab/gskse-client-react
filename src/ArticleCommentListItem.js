@@ -6,7 +6,7 @@ export class ReplyListItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onReplyClick = () => this.setState({isReplying: !this.state.isReplying});
+    this.onReplyClick = this.onReplyClick.bind(this);
     this.onSendClick = this.onSendClick.bind(this);
 
     this.onTextareaChange = onTextareaChange.bind(this);
@@ -14,8 +14,17 @@ export class ReplyListItem extends React.Component {
     this.state = {isReplying: false, text: `@${this.props.authorName} `, textLineCount: 1};
   }
 
+  onReplyClick() {
+    if (!this.state.isReplying) {
+      this.setState({isReplying: !this.state.isReplying, text: `@${this.props.authorName} `, textLineCount: 1});
+    } else {
+      this.setState({isReplying: !this.state.isReplying});
+    }
+  }
+
   onSendClick() {
     this.props.onReplySendClick(this.state.text);
+    this.setState({text: '', textLineCount: 1, isReplying: false});
   }
 
   render() {
@@ -49,7 +58,7 @@ export class ReplyListItem extends React.Component {
           {/* right content */}
           <div className="W(90%) Fl(start) Pstart(20px)">
             {/* textarea */}
-            <textarea className="W(100%)" placeholder="Add a public replay..." name="text" rows={this.state.textLineCount} defaultValue={this.state.text} onChange={this.onTextareaChange}/>
+            <textarea className="W(100%)" placeholder="Add a public replay..." name="text" rows={this.state.textLineCount} value={this.state.text} onChange={this.onTextareaChange}/>
             {/* buttons */}
             <div className="Fl(end)">
               <button className="Mend(5px)" onClick={this.onReplyClick}>Cancel</button>
@@ -66,7 +75,7 @@ export default class ArticleCommentListItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onReplyClick = () => this.setState({isReplying: !this.state.isReplying});
+    this.onReplyClick = this.onReplyClick.bind(this);
 
     this.onShowReplyClick = this.onShowReplyClick.bind(this);
     this.onSendClick = this.onSendClick.bind(this);
@@ -75,6 +84,10 @@ export default class ArticleCommentListItem extends React.Component {
     this.onTextareaChange = onTextareaChange.bind(this);
 
     this.state = {replyCount: props.replyCount, isReplying: false, doShowReplies: false, text: '', textLineCount: 1};
+  }
+
+  onReplyClick() {
+    this.setState({isReplying: !this.state.isReplying});
   }
 
   onShowReplyClick() {
@@ -88,13 +101,15 @@ export default class ArticleCommentListItem extends React.Component {
   onSendClick() {
     const text = this.state.text.trim();
     if (text) {
-      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({replyCount: replies.length, replies, doShowReplies: true}));
+      this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({
+        text: '', textLineCount: 1, isReplying: false,
+        replyCount: replies.length, replies, doShowReplies: true,
+      }));
     }
   }
 
   onReplySendClick(text) {
     text = text.trim();
-    console.log(text);
     if (text) {
       this.props.postComment({targetId: this.props.id, text}).then((replies) => this.setState({replyCount: replies.length, replies, doShowReplies: true}));
     }
