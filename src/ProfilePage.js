@@ -15,6 +15,9 @@ function TransactionListItem({i, intent, amount, balance, date}) {
       withdrawal = amount;
       break;
     }
+    default: {
+      description = 'Invalid intent';
+    }
   }
   return <tr className={i % 2 ? 'Bgc(honeydew)' : ''}>
     <td className="Px(10px)">{formatDate(date)}</td>
