@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
+import ProfilePage from './ProfilePage';
 
 import ArticleListPage from './ArticleListPage';
 import NewArticlePage from './NewArticlePage';
@@ -34,15 +35,17 @@ class App extends Component {
       this.setState({connected: true});
     });
 
-    this.login = this.login.bind(this);
     this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.getProfile = this.genericApi1.bind(this, ['cl_get_profile']);
 
-    this.getArticles = this.getArticles.bind(this);
     this.newArticle = this.newArticle.bind(this);
-    this.getArticle = this.getArticle.bind(this);
-    this.getComments = this.getComments.bind(this);
-    this.postComment = this.postComment.bind(this);
-    this.postFlag = this.postFlag.bind(this);
+    this.getArticles = this.genericApi1.bind(this, ['cl_get_articles']);
+    this.getArticle = this.genericApi1.bind(this, ['cl_get_article']);
+    this.getComments = this.genericApi1.bind(this, ['cl_get_comments']);
+    this.postComment = this.genericApi1.bind(this, ['cl_post_comment']);
+    this.postFlag = this.genericApi1.bind(this, ['cl_flag']);
 
     this.state = {
       connected: false,
@@ -62,27 +65,39 @@ class App extends Component {
     this.history.push('/error');
   }
 
+  genericApi0(event) {
+    return new Promise((resolve) => {
+      this.socket.emit(event, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
+  genericApi1(event, arg1) {
+    return new Promise((resolve) => {
+      this.socket.emit(event, arg1, (res) => {
+        if (res.err) return this.error(res.err);
+        resolve(res.data);
+      });
+    });
+  }
+
   register({name, email, password}) {
-    this.socket.emit('cl_register', {name, email, password}, (res) => {
-      if (res.err) return this.error(res.err);
+    return this.genericApi1('cl_register', {name, email, password}).then(() => {
       this.history.push('/login');
     });
   }
 
   login({nameOrEmail, password, redirect}) {
-    return new Promise((resolve) => {
-      this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
-        if (res.err) return this.error(res.err);
-        this.setState({user: res.data});
-        if (redirect) this.history.push(redirect);
-        resolve();
-      });
+    return this.genericApi1('cl_login', {nameOrEmail, password}).then((user) => {
+      this.setState({user});
+      if (redirect) this.history.push(redirect);
     });
   }
 
   logout() {
-    this.socket.emit('cl_logout', (res) => {
-      if (res.err) return this.error(res.err);
+    return this.genericApi0('cl_logout').then(() => {
       this.setState({user: null});
       this.history.push('/');
     });
@@ -92,51 +107,6 @@ class App extends Component {
     this.socket.emit('cl_new_article', {title, excerpt, coverUrl, isOriginal, sourceTitle, sourceName, sourceUrl, markdown}, (res) => {
       if (res.err) return this.error(res.err);
       this.history.push(`/articles/${title}`);
-    });
-  }
-
-  getArticles() {
-    return new Promise((resolve) => {
-      this.socket.emit('cl_get_articles', {}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
-    });
-  }
-
-  getArticle({title}) {
-    return new Promise((resolve) => {
-      this.socket.emit('cl_get_article', {title}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
-    });
-  }
-
-  getComments({targetId}) {
-    return new Promise((resolve) => {
-      this.socket.emit('cl_get_comments', {targetId}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
-    });
-  }
-
-  postComment({collection, targetId, text}) {
-    return new Promise((resolve)=> {
-      this.socket.emit('cl_post_comment', {collection, targetId, text}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
-    });
-  }
-
-  postFlag({collection, targetId, intent}) {
-    return new Promise((resolve)=> {
-      this.socket.emit('cl_flag', {collection, targetId, intent}, (res) => {
-        if (res.err) return this.error(res.err);
-        resolve(res.data);
-      });
     });
   }
 
@@ -211,8 +181,11 @@ class App extends Component {
       {/* main */}
       <Switch>
         <Route path="/" exact component={HomePage} />
+
         <PropsRoute path="/register" exact component={RegisterPage} register={this.register} />
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
+        <PropsRoute path="/profile" exact component={ProfilePage} getProfile={this.getProfile} user={this.state.user}/>
+
         <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
         <PropsRoute
