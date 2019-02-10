@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {formatDate, formatNumber, formatNumberShort, onTextareaChange, avatarIconUrl} from './utils';
+import {UP_VOTE, DOWN_VOTE} from './consts';
 
 export class ReplyListItem extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export class ReplyListItem extends React.Component {
   }
 
   onUpVoteClick() {
-    this.props.postFlag({collection: 'Comment', intent: 'UpVote', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: UP_VOTE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -41,7 +42,7 @@ export class ReplyListItem extends React.Component {
   }
 
   onDownVoteClick() {
-    this.props.postFlag({collection: 'Comment', intent: 'DownVote', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: DOWN_VOTE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -142,7 +143,7 @@ export default class ArticleCommentListItem extends React.Component {
   }
 
   onUpVoteClick() {
-    this.props.postFlag({collection: 'Comment', intent: 'UpVote', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: UP_VOTE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -152,7 +153,7 @@ export default class ArticleCommentListItem extends React.Component {
   }
 
   onDownVoteClick() {
-    this.props.postFlag({collection: 'Comment', intent: 'DownVote', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Comment', intent: DOWN_VOTE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,

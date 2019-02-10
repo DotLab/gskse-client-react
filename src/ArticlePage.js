@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import ArticleCommentListItem from './ArticleCommentListItem';
 
 import {avatarIconUrl, onTextareaChange, formatDate, formatNumber, formatNumberShort} from './utils';
+import {UP_VOTE, DOWN_VOTE, LOVE} from './consts';
 
 export default class ArticlePage extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class ArticlePage extends React.Component {
   }
 
   onUpVoteClick() {
-    this.props.postFlag({collection: 'Article', intent: 'UpVote', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Article', intent: UP_VOTE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -58,7 +59,7 @@ export default class ArticlePage extends React.Component {
   }
 
   onDownVoteClick() {
-    this.props.postFlag({collection: 'Article', intent: 'DownVote', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Article', intent: DOWN_VOTE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didUpVote: adjustment.didUpVote,
         didDownVote: adjustment.didDownVote,
@@ -69,7 +70,7 @@ export default class ArticlePage extends React.Component {
   }
 
   onLoveClick() {
-    this.props.postFlag({collection: 'Article', intent: 'Love', targetId: this.state.id}).then((adjustment) => {
+    this.props.postFlag({collection: 'Article', intent: LOVE, targetId: this.state.id}).then((adjustment) => {
       this.setState({
         didLove: adjustment.didLove,
         loveCount: this.state.loveCount + adjustment.loveCount,
