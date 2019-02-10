@@ -43,14 +43,14 @@
 .C\(dimgray\) {
   color: dimgray;
 }
+.C\(dodgerblue\) {
+  color: dodgerblue;
+}
 .C\(darkgray\) {
   color: darkgray;
 }
 .C\(red\) {
   color: red;
-}
-.C\(orange\) {
-  color: orange;
 }
 .C\(gray\) {
   color: gray;
@@ -61,20 +61,17 @@
 .C\(limegreen\) {
   color: limegreen;
 }
-.C\(dodgerblue\) {
-  color: dodgerblue;
+.C\(orange\) {
+  color: orange;
 }
 .C\(limegreen\)\:h:hover {
   color: limegreen;
 }
-.C\(gainsboro\)\:h:hover {
-  color: gainsboro;
-}
 .C\(orange\)\:h:hover {
   color: orange;
 }
-.C\(dodgerblue\)\:h:hover {
-  color: dodgerblue;
+.C\(gainsboro\)\:h:hover {
+  color: gainsboro;
 }
 .C\(red\)\:h:hover {
   color: red;
@@ -85,20 +82,23 @@
 .C\(black\)\:h:hover {
   color: black;
 }
-.HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
+.C\(dodgerblue\)\:h:hover {
   color: dodgerblue;
 }
-.Cur\(p\) {
-  cursor: pointer;
+.HomeShowcaseLinksItem:hover .HomeShowcaseLinksItem\:h_C\(dodgerblue\) {
+  color: dodgerblue;
 }
 .Cur\(a\) {
   cursor: auto;
 }
-.D\(ib\) {
-  display: inline-block;
+.Cur\(p\) {
+  cursor: pointer;
 }
 .D\(b\) {
   display: block;
+}
+.D\(ib\) {
+  display: inline-block;
 }
 .Blur\(30px\) {
   filter: blur(30px);
@@ -138,6 +138,9 @@
 }
 .Fz\(1\.5em\) {
   font-size: 1.5em;
+}
+.Fs\(i\) {
+  font-style: italic;
 }
 .H\(100\%\) {
   height: 100%;
@@ -236,14 +239,14 @@
 .T\(6px\) {
   top: 6px;
 }
-.End\(40px\) {
-  right: 40px;
+.End\(100\%\) {
+  right: 100%;
 }
 .End\(0\) {
   right: 0;
 }
-.End\(100\%\) {
-  right: 100%;
+.End\(40px\) {
+  right: 40px;
 }
 .B\(10px\) {
   bottom: 10px;
@@ -262,6 +265,9 @@
 }
 .Op\(\.5\) {
   opacity: .5;
+}
+.Op\(\.6\) {
+  opacity: .6;
 }
 .Op\(0\) {
   opacity: 0;

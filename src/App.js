@@ -12,6 +12,8 @@ import ArticlePage from './ArticlePage';
 
 import ErrorPage from './ErrorPage';
 
+import {formatNumber} from './utils';
+
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
   return React.createElement(component, finalProps);
@@ -71,8 +73,7 @@ class App extends Component {
     return new Promise((resolve) => {
       this.socket.emit('cl_login', {nameOrEmail, password}, (res) => {
         if (res.err) return this.error(res.err);
-        const {id, name} = res.data;
-        this.setState({user: {id, name}});
+        this.setState({user: res.data});
         if (redirect) this.history.push(redirect);
         resolve();
       });
@@ -158,8 +159,9 @@ class App extends Component {
           </span>
           {!connected && <span className="Va(tb) C(red)">Connecting...</span>}
           {user ? <span className="Pos(a) End(40px) B(10px)">
+            <span className="Mstart(20px) Fs(i) Op(.6)">${formatNumber(user.cash)}</span>
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
-                New v
+              New v
               <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" defaultValue="none" onChange={(e) => {
                 history.push(e.target.value);
                 e.target.value = 'none';
@@ -170,7 +172,7 @@ class App extends Component {
               </select>
             </span>
             <span className="Fw(b) Mstart(20px) Pos(r) C(dodgerblue):h">
-                Kailang v
+              {user.name} v
               <select className="Pos(a) Start(0) W(100%) Op(0) Cur(p)" defaultValue="none" onChange={(e) => {
                 const value = e.target.value;
                 if (value === '/logout') {
@@ -180,7 +182,7 @@ class App extends Component {
                 }
                 e.target.value = 'none';
               }}>
-                <option value="none" disabled>Signed in as Kailang</option>
+                <option value="none" disabled>Signed in as {user.name}</option>
                 <option value="/profile">My profile</option>
                 <option value="/articles">My articles</option>
                 <option value="/companies">My companies</option>
