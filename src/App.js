@@ -38,7 +38,12 @@ class App extends Component {
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.getProfile = this.genericApi1.bind(this, ['cl_get_profile']);
+    this.getProfile = this.genericApi0.bind(this, ['cl_get_profile']);
+
+    // this.repayLoan = this.genericApi1.bind(this, ['cl_repay_loan']);
+    // this.applyLoan = this.genericApi1.bind(this, ['cl_apply_loan']);
+    this.repayLoan = this.repayLoan.bind(this);
+    this.applyLoan = this.applyLoan.bind(this);
 
     this.newArticle = this.newArticle.bind(this);
     this.getArticles = this.genericApi1.bind(this, ['cl_get_articles']);
@@ -51,9 +56,7 @@ class App extends Component {
       connected: false,
       user: null,
     };
-  }
 
-  componentDidMount() {
     if (process.env.NODE_ENV === 'development') {
       this.login({nameOrEmail: 'Kailang', password: '123'});
     }
@@ -100,6 +103,18 @@ class App extends Component {
     return this.genericApi0('cl_logout').then(() => {
       this.setState({user: null});
       this.history.push('/');
+    });
+  }
+
+  repayLoan({loanId}) {
+    return this.genericApi1('cl_repay_loan', {loanId}).then((user) => {
+      this.setState({user});
+    });
+  }
+
+  applyLoan({amount}) {
+    return this.genericApi1('cl_apply_loan', {amount}).then((user) => {
+      this.setState({user});
     });
   }
 
@@ -184,9 +199,16 @@ class App extends Component {
 
         <PropsRoute path="/register" exact component={RegisterPage} register={this.register} />
         <PropsRoute path="/login" exact component={LoginPage} login={this.login} />
-        <PropsRoute path="/profile" exact component={ProfilePage} getProfile={this.getProfile} user={this.state.user}/>
+        <PropsRoute
+          path="/profile" exact
+          component={ProfilePage}
+          user={this.state.user}
+          getProfile={this.getProfile}
+          repayLoan={this.repayLoan}
+          applyLoan={this.applyLoan}
+        />
 
-        <PropsRoute path="/articles" exact component={ArticleListPage} getArticles={this.getArticles} user={this.state.user}/>
+        <PropsRoute path="/articles" exact component={ArticleListPage} user={this.state.user} getArticles={this.getArticles} />
         <PropsRoute path="/articles/new" exact component={NewArticlePage} newArticle={this.newArticle} />
         <PropsRoute
           path="/articles/:title" exact

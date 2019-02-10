@@ -11,6 +11,14 @@ export function formatDate(date) {
   return date.toLocaleDateString();
 }
 
+export function formatDateTime(date) {
+  if (date == null) return null;
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+  return date.toLocaleString(date);
+}
+
 export function formatNumber(number) {
   if (number == null) return null;
   if (typeof number === 'string') {
