@@ -7,10 +7,9 @@ script:
   - npm run atomize
   - npm run build
   - ls -l build
-  - openssl aes-256-cbc -K $encrypted_fd75b0287618_key -iv $encrypted_fd75b0287618_iv
-    -in deploy-rsa-key.enc -out /tmp/deploy-rsa-key -d
-  - chmod 600 /tmp/deploy-rsa-key
+  - openssl aes-256-cbc -K $encrypted_fd75b0287618_key -iv $encrypted_fd75b0287618_iv -in web-worker-key.enc -out /tmp/web-worker-key -d
+  - chmod 600 /tmp/web-worker-key
   - eval `ssh-agent`
-  - ssh-add /tmp/deploy-rsa-key
-  - rsync -avzcP build/ kailangfu@35.233.171.1:/home/kailangfu/www/gskse.com/
+  - ssh-add /tmp/web-worker-key
+  - rsync -avzcP build/ web-worker@35.233.171.1:/home/web-worker/www/gskse.com/
   - kill $SSH_AGENT_PID
